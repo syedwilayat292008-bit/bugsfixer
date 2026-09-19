@@ -74,20 +74,13 @@ const Navbar = () => {
         <div className="container mx-auto px-4 lg:px-6">
           <div className="flex justify-between items-center gap-4">
             
-            {/* Logo (Compact) */}
-            <Link to="/" className="flex items-center space-x-2 group shrink-0">
-              <div className="relative">
-                <div className="bg-blue-600 p-1.5 rounded-lg group-hover:rotate-12 transition-transform duration-300">
-                  <span className="text-white text-base font-black tracking-tighter">BF</span>
-                </div>
-                <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
-              </div>
-              <div className="flex flex-col">
-                <span className={`text-lg font-black tracking-tighter leading-none ${scrolled ? 'text-blue-900' : 'text-slate-900'}`}>
-                  Bugs<span className="text-blue-600">Fixer</span>
-                </span>
-                <span className="text-[8px] uppercase font-bold tracking-widest text-slate-500 -mt-0.5">Pakistan's Best IT Center</span>
-              </div>
+            {/* Logo with Image */}
+            <Link to="/" className="flex items-center group shrink-0">
+              <img 
+                src="https://i.postimg.cc/fRbhDWPx/logo-7edf2235d9195452fb1f-(1).png" 
+                alt="BugsFixer Logo" 
+                className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
             </Link>
 
             {/* Desktop Menu (Compact) */}
