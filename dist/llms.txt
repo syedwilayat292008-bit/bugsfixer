@@ -1,0 +1,17 @@
+# BugsFixer Pakistan – IT Services & Max Sale ERP Solutions
+
+> BugsFixer is Pakistan's leading IT service center based in Peshawar. We engineer turn-key CCTV video surveillance, chip-level laptop repairs, biometric access control, Cat6 networking, and custom Max Sale ERP software.
+
+## Core Technical Services
+- CCTV Installation & Video Surveillance (Hikvision, Dahua, Uniview 4K IP & HD Analog)
+- Workstation & Laptop Chip-Level Repair (Dell Latitude, HP EliteBook, ThinkPad, MacBook)
+- Biometric Attendance & Smart Locks (ZKTeco, Hikvision Face AI, Electromagnetic Locks)
+- Networking & PABX Telephony (Cisco Switches, MikroTik Routers, Ubiquiti Mesh Wi-Fi, Grandstream IP-PBX)
+- Max Sale ERP Software (POS Billing, Python LAN Master-Terminal Server, Multi-Branch Web Analytics)
+
+## Direct Contact & Service Location
+- Address: Office #26, 3rd Floor, Shaid Plaza, University Road, Tehkal, Peshawar, KPK, 25000, Pakistan
+- WhatsApp / Call: +92 321 6900448
+- Email: jeekhurram@yahoo.com
+- Official Website: https://bugsfixerweb.pp.ua
+- Max Sale ERP Portal: https://bugsfixer.pp.ua

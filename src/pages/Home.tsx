@@ -114,7 +114,7 @@ const Home = () => {
       initials: 'MF'
     },
     {
-      name: 'Dr.Naveed Khan',
+      name: 'Dr. Naveed Khan',
       role: 'Admin Officer',
       company: 'Supreme Court Support Wing',
       rating: 5,
@@ -132,7 +132,7 @@ const Home = () => {
         <meta name="keywords" content="IT Services Pakistan, CCTV installation Peshawar, Used Laptops Peshawar, Network Setup KPK, Max Sale ERP, POS Software Pakistan, Hardware Repair" />
         <link rel="canonical" href="https://bugsfixerweb.pp.ua/" />
 
-        {/* Open Graph Tags (Facebook & WhatsApp Previews) */}
+        {/* Open Graph Tags */}
         <meta property="og:title" content="BugsFixer Pakistan | Complete IT & Max Sale ERP Solutions" />
         <meta property="og:description" content="Expert CCTV, Networking, Laptops, and Custom Python ERP Software. Build your custom IT bundle today." />
         <meta property="og:type" content="website" />
@@ -212,21 +212,21 @@ const Home = () => {
                           {stat.icon}
                         </div>
                       </div>
-                      <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">{stat.label}</div>
+                      <div className="text-[10px] sm:text-xs font-bold text-slate-600 uppercase tracking-widest">{stat.label}</div>
                     </div>
                   ))}
                 </motion.div>
               </motion.div>
 
-              {/* Hero Right Image (Crisp HD on PC & Fast on Mobile) */}
+              {/* Hero Right Image */}
               <motion.div 
-                className="lg:w-1/2 w-full relative"
+                className="lg:w-1/2 w-full relative min-h-[360px] sm:min-h-[500px]"
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
                 transition={{ duration: 0.5 }}
               >
                 <div className="relative z-10 bg-white p-3 sm:p-4 rounded-[2.5rem] lg:rounded-[3rem] shadow-2xl shadow-blue-900/10 border border-white/50 w-full">
-                  <div className="overflow-hidden rounded-[2rem] lg:rounded-[2.5rem] w-full h-[350px] sm:h-[450px] lg:h-[520px] bg-slate-100">
+                  <div className="overflow-hidden rounded-[2rem] lg:rounded-[2.5rem] w-full h-[360px] sm:h-[450px] lg:h-[520px] bg-slate-100">
                     <img 
                       src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80&fm=webp" 
                       alt="BugsFixer IT Professional Setup" 
@@ -244,7 +244,7 @@ const Home = () => {
                       <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Active Security</p>
+                      <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Active Security</p>
                       <p className="text-xs sm:text-sm font-black text-slate-900">24/7 Monitoring</p>
                     </div>
                   </div>
@@ -255,7 +255,7 @@ const Home = () => {
                       <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Fast Support</p>
+                      <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Fast Support</p>
                       <p className="text-xs sm:text-sm font-black text-slate-900">Under 30 Mins</p>
                     </div>
                   </div>
@@ -364,7 +364,7 @@ const Home = () => {
                     </p>
 
                     <div className="space-y-3 mb-6">
-                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3">Included Capabilities</p>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Included Capabilities</p>
                       {plan.features.map((feat, i) => (
                         <div key={i} className="flex items-start gap-2.5">
                           <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
@@ -446,7 +446,7 @@ const Home = () => {
                     <div>
                       <p className="font-black text-slate-900 text-xs">{item.name}</p>
                       <p className="text-[11px] font-bold text-blue-600">{item.role}</p>
-                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{item.company}</p>
+                      <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">{item.company}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -492,19 +492,19 @@ const Home = () => {
                 <form className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <label className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Full Name</label>
-                      <input type="text" className="w-full px-5 py-3.5 bg-slate-50 border-2 border-slate-100 focus:border-blue-600 focus:bg-white rounded-2xl outline-none text-sm font-semibold" placeholder="Your Name" />
+                      <label htmlFor="cta-name" className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Full Name</label>
+                      <input id="cta-name" name="name" type="text" className="w-full px-5 py-3.5 bg-slate-50 border-2 border-slate-100 focus:border-blue-600 focus:bg-white rounded-2xl outline-none text-sm font-semibold" placeholder="Your Name" />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Email Address</label>
-                      <input type="email" className="w-full px-5 py-3.5 bg-slate-50 border-2 border-slate-100 focus:border-blue-600 focus:bg-white rounded-2xl outline-none text-sm font-semibold" placeholder="your@email.com" />
+                      <label htmlFor="cta-email" className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Email Address</label>
+                      <input id="cta-email" name="email" type="email" className="w-full px-5 py-3.5 bg-slate-50 border-2 border-slate-100 focus:border-blue-600 focus:bg-white rounded-2xl outline-none text-sm font-semibold" placeholder="your@email.com" />
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Message</label>
-                    <textarea rows={3} className="w-full px-5 py-3.5 bg-slate-50 border-2 border-slate-100 focus:border-blue-600 focus:bg-white rounded-2xl outline-none text-sm font-semibold resize-none" placeholder="Tell us about your IT setup or software needs..." />
+                    <label htmlFor="cta-message" className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Message</label>
+                    <textarea id="cta-message" name="message" rows={3} className="w-full px-5 py-3.5 bg-slate-50 border-2 border-slate-100 focus:border-blue-600 focus:bg-white rounded-2xl outline-none text-sm font-semibold resize-none" placeholder="Tell us about your IT setup or software needs..." />
                   </div>
-                  <button type="submit" className="w-full bg-slate-900 text-white py-4 rounded-2xl font-black text-base hover:bg-blue-600 transition-all shadow-lg">
+                  <button type="submit" aria-label="Send contact form message" className="w-full bg-slate-900 text-white py-4 rounded-2xl font-black text-base hover:bg-blue-600 transition-all shadow-lg">
                     Send Message
                   </button>
                 </form>
@@ -516,7 +516,7 @@ const Home = () => {
         {/* --- MAX SALE ERP DEMO REQUEST MODAL --- */}
         <AnimatePresence>
           {isDemoModalOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-labelledby="modal-demo-title">
               <motion.div
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeDemoModal}
                 className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"
@@ -526,7 +526,7 @@ const Home = () => {
                 className="relative w-full max-w-lg bg-white rounded-[2rem] shadow-2xl overflow-hidden z-10"
               >
                 <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white relative">
-                  <button onClick={closeDemoModal} className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                  <button onClick={closeDemoModal} aria-label="Close demo modal" className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
                     <X className="w-4 h-4" />
                   </button>
                   <div className="flex items-center gap-3">
@@ -534,33 +534,33 @@ const Home = () => {
                       <Layers className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-black text-white">Schedule ERP Demo</h3>
+                      <h3 id="modal-demo-title" className="text-xl font-black text-white">Schedule ERP Demo</h3>
                       <p className="text-xs text-blue-100 font-medium">Selected: {selectedPlan}</p>
                     </div>
                   </div>
                 </div>
                 <form onSubmit={handleDemoSubmit} className="p-6 space-y-4 bg-slate-50">
                   <div>
-                    <label className="block text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1 flex items-center gap-1.5"><User className="w-3.5 h-3.5 text-blue-500" /> Full Name *</label>
-                    <input type="text" required value={demoName} onChange={(e) => setDemoName(e.target.value)} placeholder="e.g. Syed Wail" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none" />
+                    <label htmlFor="demo-fullname" className="block text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1 flex items-center gap-1.5"><User className="w-3.5 h-3.5 text-blue-500" /> Full Name *</label>
+                    <input id="demo-fullname" name="fullname" type="text" required value={demoName} onChange={(e) => setDemoName(e.target.value)} placeholder="e.g. Syed Wail" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none" />
                   </div>
                   <div>
-                    <label className="block text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1 flex items-center gap-1.5"><Building className="w-3.5 h-3.5 text-blue-500" /> Company / Shop Name</label>
-                    <input type="text" value={demoBusiness} onChange={(e) => setDemoBusiness(e.target.value)} placeholder="e.g. BugsFixer Tech" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none" />
+                    <label htmlFor="demo-business" className="block text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1 flex items-center gap-1.5"><Building className="w-3.5 h-3.5 text-blue-500" /> Company / Shop Name</label>
+                    <input id="demo-business" name="business" type="text" value={demoBusiness} onChange={(e) => setDemoBusiness(e.target.value)} placeholder="e.g. BugsFixer Tech" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none" />
                   </div>
                   <div>
-                    <label className="block text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1 flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-blue-500" /> WhatsApp Number *</label>
-                    <input type="text" required value={demoPhone} onChange={(e) => setDemoPhone(e.target.value)} placeholder="e.g. +92 321 6900448" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none" />
+                    <label htmlFor="demo-phone" className="block text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1 flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-blue-500" /> WhatsApp Number *</label>
+                    <input id="demo-phone" name="phone" type="text" required value={demoPhone} onChange={(e) => setDemoPhone(e.target.value)} placeholder="e.g. +92 321 6900448" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none" />
                   </div>
                   <div>
-                    <label className="block text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1 flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-blue-500" /> Preferred Demo Time</label>
-                    <select value={demoTime} onChange={(e) => setDemoTime(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none appearance-none">
+                    <label htmlFor="demo-time" className="block text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1 flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-blue-500" /> Preferred Demo Time</label>
+                    <select id="demo-time" name="demotime" value={demoTime} onChange={(e) => setDemoTime(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none appearance-none">
                       <option value="Morning (10 AM - 1 PM)">Morning (10 AM - 1 PM)</option>
                       <option value="Afternoon (2 PM - 5 PM)">Afternoon (2 PM - 5 PM)</option>
                       <option value="Evening (6 PM - 9 PM)">Evening (6 PM - 9 PM)</option>
                     </select>
                   </div>
-                  <button type="submit" className="w-full bg-slate-900 hover:bg-blue-600 text-white font-black py-4 rounded-2xl text-sm transition-all shadow-xl flex items-center justify-center gap-2 mt-3">
+                  <button type="submit" aria-label="Send ERP demo request via WhatsApp" className="w-full bg-slate-900 hover:bg-blue-600 text-white font-black py-4 rounded-2xl text-sm transition-all shadow-xl flex items-center justify-center gap-2 mt-3">
                     <Send className="w-4 h-4 text-blue-400" /> Send via WhatsApp
                   </button>
                 </form>
