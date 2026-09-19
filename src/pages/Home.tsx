@@ -243,7 +243,7 @@ const Home = () => {
                     <motion.img 
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.5 }}
-                      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                     src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=650&q=70&fm=webp"
                       alt="BugsFixer IT Professional Setup" 
                       className="w-full h-[550px] object-cover"
                       loading="lazy"
