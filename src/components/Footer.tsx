@@ -261,11 +261,11 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-6">
-            <Link to="/contact" className="text-slate-500 hover:text-slate-300 text-xs font-semibold transition-colors">
+            <Link to="/privacy" className="text-slate-500 hover:text-slate-300 text-xs font-semibold transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/contact" className="text-slate-500 hover:text-slate-300 text-xs font-semibold transition-colors">
-              Terms of Service
+            <Link to="/terms" className="text-slate-500 hover:text-slate-300 text-xs font-semibold transition-colors">
+              Terms & Conditions
             </Link>
             <a 
               href="https://bugsfixer.pp.ua" 

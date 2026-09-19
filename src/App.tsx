@@ -13,6 +13,12 @@ import TelephoneNetworking from './pages/TelephoneNetworking';
 import BuildBundle from './pages/BuildBundle';
 import Inventory from './pages/Inventory';
 import ScrollToTop from './components/ScrollToTop';
+import TermsAndConditions from './pages/TermsAndConditions';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+
+// --- Popups ---
+import CookieConsent from './components/CookieConsent';
+import WelcomePopup from './components/WelcomePopup';
 
 // --- Animated Route Transitions Component ---
 const AnimatedRoutes = () => {
@@ -38,6 +44,8 @@ const AnimatedRoutes = () => {
           <Route path="/telephone-networking" element={<TelephoneNetworking />} />
           <Route path="/build-bundle" element={<BuildBundle />} />
           <Route path="/inventory" element={<Inventory />} />
+          <Route path="/terms" element={<TermsAndConditions />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
       </motion.div>
     </AnimatePresence>
@@ -93,6 +101,11 @@ function App() {
             </svg>
           </motion.a>
         </motion.div>
+
+        {/* Global Popups */}
+        <WelcomePopup />
+        <CookieConsent />
+
       </div>
     </Router>
   );
