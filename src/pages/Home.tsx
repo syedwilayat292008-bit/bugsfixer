@@ -5,7 +5,7 @@ import {
   ShieldCheck, Settings, Cpu, Smartphone, Monitor, Zap, 
   CheckCircle2, MessageSquare, ArrowRight, TrendingUp, Heart, 
   Globe, Server, Layers, Sparkles, X, Send, Calendar, Phone, 
-  Building, User, ExternalLink, Plus
+  Building, User, ExternalLink, Plus, Star, Quote
 } from 'lucide-react';
 
 // --- Enterprise Animation Variants ---
@@ -49,17 +49,12 @@ const Home = () => {
       element.setAttribute('content', content);
     };
 
-    // Standard SEO
     setMetaTag('name', 'description', 'Pakistan\'s Best IT Service Center providing CCTV, networking, used laptops, biometric systems, and Max Sale ERP software solutions nationwide.');
     setMetaTag('name', 'keywords', 'IT Services Pakistan, CCTV installation, Used Laptops Peshawar, Network Setup, Max Sale ERP, POS Software Pakistan, Hardware Repair');
-    
-    // Open Graph (WhatsApp, Facebook, LinkedIn sharing)
     setMetaTag('property', 'og:title', 'BugsFixer Pakistan | Professional IT Solutions');
     setMetaTag('property', 'og:description', 'Expert CCTV, Networking, Laptops, and Custom Python ERP Software. Build your custom IT bundle today.');
     setMetaTag('property', 'og:type', 'website');
-    setMetaTag('property', 'og:image', 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'); // Replace with your actual banner
-    
-    // Twitter
+    setMetaTag('property', 'og:image', 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
     setMetaTag('name', 'twitter:card', 'summary_large_image');
     setMetaTag('name', 'twitter:title', 'BugsFixer Pakistan');
     setMetaTag('name', 'twitter:description', 'Professional IT infrastructure and Max Sale ERP software for businesses.');
@@ -109,11 +104,54 @@ const Home = () => {
     { label: 'Years Active', value: '15+', icon: <TrendingUp className="w-5 h-5 text-emerald-500" /> },
   ];
 
+  // --- Client Testimonials ---
+  const testimonials = [
+    {
+      name: 'Syed Jawad Shah',
+      role: 'Finance Manager',
+      company: 'Pakistan Oxygen',
+      rating: 5,
+      review: 'BugsFixer has provided us excellent IT services across almost all areas — CCTV, networking, hardware support, and system maintenance. Their response time and technical quality are outstanding. Highly recommended for corporate environments.',
+      initials: 'SJ'
+    },
+    {
+      name: 'Engr. Kamran Ali',
+      role: 'IT Manager',
+      company: 'Wafid Visa Medical Centers',
+      rating: 5,
+      review: 'We trust BugsFixer for multi-center deployments across Peshawar, Islamabad, and Chakdara. From biometric access to structured networking, their team delivers reliable enterprise-grade solutions with full accountability.',
+      initials: 'KA'
+    },
+    {
+      name: 'Ayesha Rahman',
+      role: 'Operations Head',
+      company: 'Mr. Cod Restaurant',
+      rating: 5,
+      review: 'Max Sale ERP transformed our multi-branch billing and inventory control. Real-time sync between counters and head office is smooth. BugsFixer support team is always available when we need them.',
+      initials: 'AR'
+    },
+    {
+      name: 'Muhammad Farooq',
+      role: 'Branch Manager',
+      company: 'State Life',
+      rating: 5,
+      review: 'Professional CCTV and access control installation with clean cabling and proper documentation. BugsFixer handled our office infrastructure with great care and completed everything on schedule.',
+      initials: 'MF'
+    },
+    {
+      name: 'Dr. Naveed Khan',
+      role: 'Admin Officer',
+      company: 'Supreme Court Support Wing',
+      rating: 5,
+      review: 'Secure networking, biometric attendance, and hardware support from BugsFixer have been consistent and dependable. Their engineers understand institutional requirements and work with full professionalism.',
+      initials: 'NK'
+    }
+  ];
+
   return (
     <div className="overflow-x-hidden bg-white">
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-        {/* Parallax & Animated Backgrounds */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <motion.div 
             animate={{ scale: [1, 1.1, 1], rotate: [0, 90, 0] }}
@@ -125,7 +163,6 @@ const Home = () => {
             transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
             className="absolute -bottom-40 -left-40 w-[800px] h-[800px] bg-indigo-100/50 rounded-full mix-blend-multiply filter blur-[100px]"
           />
-          {/* Subtle grid pattern */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay"></div>
         </div>
 
@@ -212,10 +249,10 @@ const Home = () => {
                     src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
                     alt="BugsFixer IT Professional Setup" 
                     className="w-full h-[550px] object-cover"
+                    loading="lazy"
                   />
                 </div>
                 
-                {/* Floating Notification 1 */}
                 <motion.div 
                   animate={{ y: [0, -15, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -230,7 +267,6 @@ const Home = () => {
                   </div>
                 </motion.div>
 
-                {/* Floating Notification 2 */}
                 <motion.div 
                   animate={{ y: [0, 15, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
@@ -246,7 +282,6 @@ const Home = () => {
                 </motion.div>
               </div>
 
-              {/* Decorative Rings */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] border-[2px] border-dashed border-blue-200 rounded-full -z-10 animate-spin-slow opacity-60" />
             </motion.div>
           </div>
@@ -283,7 +318,6 @@ const Home = () => {
                   to={service.path}
                   className="group block bg-white p-10 rounded-[2.5rem] shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-300 border border-slate-100 hover:border-blue-100 h-full relative overflow-hidden"
                 >
-                  {/* Hover Background Gradient */}
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <div className="relative z-10 flex flex-col h-full">
@@ -307,7 +341,6 @@ const Home = () => {
 
       {/* --- MAX SALE ERP SOFTWARE SECTION --- */}
       <section className="py-32 bg-[#0B1120] text-white relative overflow-hidden">
-        {/* Abstract Dark Glow Effects */}
         <div className="absolute top-0 left-1/4 w-[1000px] h-[500px] bg-blue-600/20 rounded-full filter blur-[150px] -translate-y-1/2 pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-[800px] h-[600px] bg-purple-600/20 rounded-full filter blur-[150px] translate-y-1/3 pointer-events-none" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] mix-blend-overlay pointer-events-none"></div>
@@ -331,7 +364,6 @@ const Home = () => {
             </motion.p>
           </motion.div>
 
-          {/* Pricing Cards Grid */}
           <motion.div 
             initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
             className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center"
@@ -347,7 +379,6 @@ const Home = () => {
                     : 'border-slate-800 hover:border-slate-600'
                 }`}
               >
-                {/* Popular Glow Ring */}
                 {plan.isPopular && (
                   <div className="absolute -inset-[1px] bg-gradient-to-b from-blue-500 to-purple-600 rounded-[2.5rem] -z-10 opacity-50 blur-[2px]" />
                 )}
@@ -402,7 +433,6 @@ const Home = () => {
             ))}
           </motion.div>
 
-          {/* ERP Dashboard Teaser */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }}
             className="mt-16 bg-gradient-to-r from-blue-900/50 to-indigo-900/50 backdrop-blur-md border border-blue-500/30 rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl"
@@ -459,7 +489,7 @@ const Home = () => {
 
               <motion.div variants={fadeRight} whileHover={{ x: 10 }}>
                 <Link to="/inventory" className="inline-flex items-center gap-3 font-black text-indigo-600 uppercase tracking-widest text-sm hover:text-indigo-800 transition-colors">
-                  Browse Laptop Inventory <ArrowRight className="w-5 h-5" />
+                  Browse Hardware Vault <ArrowRight className="w-5 h-5" />
                 </Link>
               </motion.div>
             </motion.div>
@@ -469,7 +499,7 @@ const Home = () => {
               className="lg:w-1/2 order-1 lg:order-2"
             >
               <div className="rounded-[3rem] overflow-hidden shadow-2xl shadow-indigo-900/10 border border-slate-100">
-                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Laptops" className="w-full h-[600px] object-cover hover:scale-105 transition-transform duration-700" />
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Laptops" className="w-full h-[600px] object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
               </div>
             </motion.div>
           </div>
@@ -510,15 +540,14 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Bento Grid Images */}
               <motion.div variants={fadeUp} className="lg:w-1/2 grid grid-cols-2 gap-4 h-full">
                 <div className="space-y-4 pt-12">
-                  <div className="overflow-hidden rounded-3xl h-64"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Tech" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" /></div>
-                  <div className="overflow-hidden rounded-3xl h-48"><img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Tech" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" /></div>
+                  <div className="overflow-hidden rounded-3xl h-64"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Tech" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy" /></div>
+                  <div className="overflow-hidden rounded-3xl h-48"><img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Tech" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy" /></div>
                 </div>
                 <div className="space-y-4">
-                  <div className="overflow-hidden rounded-3xl h-48"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Tech" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" /></div>
-                  <div className="overflow-hidden rounded-3xl h-64"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Tech" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" /></div>
+                  <div className="overflow-hidden rounded-3xl h-48"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Tech" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy" /></div>
+                  <div className="overflow-hidden rounded-3xl h-64"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Tech" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy" /></div>
                 </div>
               </motion.div>
             </div>
@@ -526,8 +555,79 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ============================================================ */}
+      {/* CLIENT TESTIMONIALS / REVIEWS SECTION                         */}
+      {/* ============================================================ */}
+      <section className="py-32 bg-slate-50 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-100/40 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <motion.div 
+            initial="hidden" whileInView="show" viewport={{ once: true }} variants={staggerContainer}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 border border-amber-100 rounded-full mb-6">
+              <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+              <span className="text-xs font-black text-amber-700 uppercase tracking-widest">Client Testimonials</span>
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
+              Trusted by Leading Organizations
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-lg text-slate-500 font-medium leading-relaxed">
+              Real feedback from finance managers, IT heads, and operations leaders who rely on BugsFixer for enterprise IT infrastructure and Max Sale ERP.
+            </motion.p>
+          </motion.div>
+
+          <motion.div 
+            initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          >
+            {testimonials.map((item, index) => (
+              <motion.div
+                key={index}
+                variants={fadeUp}
+                whileHover={{ y: -6 }}
+                className={`bg-white rounded-[2rem] p-8 shadow-xl shadow-slate-200/40 border border-slate-100 hover:border-blue-200 transition-all relative overflow-hidden flex flex-col ${
+                  index === 0 ? 'md:col-span-2 lg:col-span-1' : ''
+                }`}
+              >
+                {/* Quote Icon */}
+                <div className="absolute top-6 right-6 opacity-10">
+                  <Quote className="w-12 h-12 text-blue-600" />
+                </div>
+
+                {/* Stars */}
+                <div className="flex items-center gap-1 mb-5">
+                  {Array.from({ length: item.rating }).map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
+                  ))}
+                </div>
+
+                {/* Review Text */}
+                <p className="text-slate-600 font-medium leading-relaxed text-sm mb-8 flex-grow relative z-10">
+                  "{item.review}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-4 pt-5 border-t border-slate-100">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center font-black text-sm shadow-lg shadow-blue-600/20">
+                    {item.initials}
+                  </div>
+                  <div>
+                    <p className="font-black text-slate-900 text-sm leading-tight">{item.name}</p>
+                    <p className="text-xs font-bold text-blue-600 mt-0.5">{item.role}</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{item.company}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* --- CONTACT CTA --- */}
-      <section className="py-32 bg-slate-50">
+      <section className="py-32 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: "spring", duration: 1 }}
