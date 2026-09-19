@@ -6,7 +6,7 @@ import {
   ShieldCheck, Settings, Cpu, Smartphone, Monitor, Zap, 
   MessageSquare, ArrowRight, TrendingUp, Heart, 
   Globe, Server, Layers, Sparkles, X, Send, Calendar, Phone, 
-  Building, User, ExternalLink, Plus, Star, Quote
+  Building, User, ExternalLink, Plus, Star, Quote, CheckCircle2
 } from 'lucide-react';
 
 // --- Enterprise Animation Variants ---
@@ -365,7 +365,7 @@ const Home = () => {
               initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
               className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center"
             >
-              {erpPlans.map((plan, index) => (
+              {erpPlans.map((plan) => (
                 <motion.div
                   key={plan.name}
                   variants={fadeUp}
