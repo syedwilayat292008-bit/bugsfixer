@@ -1,9 +1,19 @@
-import { useState, useEffect } from 'react';
+importimport { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
-  Menu, X, ChevronDown, MessageSquare, PhoneCall, 
-  User, LayoutDashboard, ShieldCheck, ArrowRight, Clock, 
-  ExternalLink, ChevronLeft, Send
+  Menu, 
+  X, 
+  ChevronDown, 
+  MessageSquare, 
+  PhoneCall, 
+  User, 
+  LayoutDashboard, 
+  ShieldCheck, 
+  ArrowRight, 
+  Clock, 
+  ExternalLink,
+  ChevronLeft,
+  Send
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -12,9 +22,11 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showServices, setShowServices] = useState(false);
   
+  // Client Portal Modal States
   const [isPortalModalOpen, setIsPortalModalOpen] = useState(false);
   const [portalStep, setPortalStep] = useState<'select' | 'infraplus_notice'>('select');
   
+  // InfraPlus Early Access Form State
   const [clientName, setClientName] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [contactNo, setContactNo] = useState('');
@@ -36,6 +48,7 @@ const Navbar = () => {
 
   const closePortalModal = () => {
     setIsPortalModalOpen(false);
+    // Reset state after transition finishes
     setTimeout(() => setPortalStep('select'), 300);
   };
 
@@ -67,29 +80,40 @@ const Navbar = () => {
       <nav 
         className={`fixed w-full z-40 transition-all duration-500 ${
           scrolled 
-            ? 'bg-white/90 backdrop-blur-md shadow-lg py-2.5' 
-            : 'bg-transparent py-4'
+            ? 'bg-white/90 backdrop-blur-md shadow-lg py-3' 
+            : 'bg-transparent py-5'
         }`}
       >
-        <div className="container mx-auto px-4 lg:px-6">
-          <div className="flex justify-between items-center gap-4">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="flex justify-between items-center">
             
-            {/* Logo with Image */}
-            <Link to="/" className="flex items-center group shrink-0">
-              <img 
-                src="https://i.postimg.cc/fRbhDWPx/logo-7edf2235d9195452fb1f-(1).png" 
-                alt="BugsFixer Logo" 
-                className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              />
+            {/* Logo Section with both Image Icon & Text Titles */}
+            <Link to="/" className="flex items-center space-x-3 group">
+              <div className="relative flex-shrink-0">
+                <img 
+                  src="https://i.postimg.cc/fRbhDWPx/logo-7edf2235d9195452fb1f-(1).png" 
+                  alt="BugsFixer Logo" 
+                  className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-105 group-hover:rotate-3"
+                />
+                <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></div>
+              </div>
+              <div className="flex flex-col">
+                <span className={`text-2xl font-black tracking-tighter leading-none ${scrolled ? 'text-blue-900' : 'text-slate-900'}`}>
+                  Bugs<span className="text-blue-600">Fixer</span>
+                </span>
+                <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-slate-500 mt-0.5">
+                  Pakistan's Best IT Service Center
+                </span>
+              </div>
             </Link>
 
-            {/* Desktop Menu (Compact) */}
-            <div className="hidden lg:flex items-center gap-0.5">
+            {/* Desktop Menu */}
+            <div className="hidden lg:flex items-center space-x-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`px-3 py-1.5 rounded-full font-bold transition-all text-[11px] uppercase tracking-wider whitespace-nowrap ${
+                  className={`px-4 py-2 rounded-full font-bold transition-all text-sm uppercase tracking-wide ${
                     location.pathname === link.path 
                       ? 'text-blue-600 bg-blue-50' 
                       : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50/50'
@@ -101,7 +125,7 @@ const Navbar = () => {
               
               <Link
                 to="/build-bundle"
-                className={`px-3 py-1.5 rounded-full font-bold transition-all text-[11px] uppercase tracking-wider whitespace-nowrap ${
+                className={`px-4 py-2 rounded-full font-bold transition-all text-sm uppercase tracking-wide ${
                   location.pathname === '/build-bundle' 
                     ? 'text-indigo-600 bg-indigo-50' 
                     : 'text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50'
@@ -114,14 +138,14 @@ const Navbar = () => {
               <div className="relative group">
                 <button 
                   onMouseEnter={() => setShowServices(true)}
-                  className={`px-3 py-1.5 rounded-full font-bold transition-all text-[11px] uppercase tracking-wider flex items-center gap-1 whitespace-nowrap ${
+                  className={`px-4 py-2 rounded-full font-bold transition-all text-sm uppercase tracking-wide flex items-center space-x-1 ${
                     services.some(s => location.pathname === s.path)
                       ? 'text-blue-600 bg-blue-50'
                       : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50/50'
                   }`}
                 >
                   <span>Services</span>
-                  <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${showServices ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${showServices ? 'rotate-180' : ''}`} />
                 </button>
 
                 <AnimatePresence>
@@ -131,13 +155,13 @@ const Navbar = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
                       onMouseLeave={() => setShowServices(false)}
-                      className="absolute top-full right-0 w-60 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden py-2"
+                      className="absolute top-full right-0 w-64 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden py-2"
                     >
                       {services.map((service) => (
                         <Link
                           key={service.name}
                           to={service.path}
-                          className="block px-5 py-2.5 text-xs font-bold text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                          className="block px-6 py-3 text-sm font-bold text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors"
                         >
                           {service.name}
                         </Link>
@@ -147,23 +171,25 @@ const Navbar = () => {
                 </AnimatePresence>
               </div>
 
-              {/* Action Buttons (Compact) */}
-              <div className="ml-2 flex items-center gap-1.5">
+              {/* Action Buttons */}
+              <div className="ml-4 flex items-center gap-2">
+                {/* CLIENT LOGIN BUTTON */}
                 <button
                   onClick={() => setIsPortalModalOpen(true)}
-                  className="bg-slate-900 text-white px-3.5 py-2 rounded-full font-bold text-[11px] hover:bg-blue-600 transition-all shadow-md flex items-center gap-1.5 border border-slate-800 whitespace-nowrap"
+                  className="bg-slate-900 text-white px-5 py-2.5 rounded-full font-bold text-sm hover:bg-blue-600 transition-all shadow-md flex items-center gap-2 border border-slate-800"
                 >
-                  <User className="w-3.5 h-3.5 text-blue-400" />
-                  Login
+                  <User className="w-4 h-4 text-blue-400" />
+                  Client Login
                 </button>
 
+                {/* WhatsApp Button */}
                 <a 
                   href="https://wa.me/923216900448" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-blue-600 text-white px-3.5 py-2 rounded-full font-bold text-[11px] hover:bg-blue-700 transition-all shadow-md flex items-center gap-1.5 whitespace-nowrap"
+                  className="bg-blue-600 text-white px-5 py-2.5 rounded-full font-bold text-sm hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/25 flex items-center gap-2"
                 >
-                  <MessageSquare className="w-3.5 h-3.5" />
+                  <MessageSquare className="w-4 h-4" />
                   WhatsApp
                 </a>
               </div>
@@ -174,7 +200,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden p-2 text-slate-600 hover:text-blue-600"
             >
-              {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+              {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
             </button>
           </div>
         </div>
@@ -193,24 +219,25 @@ const Navbar = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className="text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
+                    className="text-xl font-bold text-slate-900 py-2 border-b border-slate-50"
                   >
                     {link.name}
                   </Link>
                 ))}
                 <Link
                   to="/build-bundle"
-                  className="text-lg font-bold text-indigo-600 py-2 border-b border-slate-50"
+                  className="text-xl font-bold text-indigo-600 py-2 border-b border-slate-50"
                 >
                   Build Bundle
                 </Link>
 
+                {/* Client Login Option on Mobile */}
                 <button
                   onClick={() => {
                     setIsOpen(false);
                     setIsPortalModalOpen(true);
                   }}
-                  className="text-lg font-black text-blue-600 py-3 border-b border-slate-100 flex items-center justify-between"
+                  className="text-xl font-black text-blue-600 py-3 border-b border-slate-100 flex items-center justify-between"
                 >
                   <span className="flex items-center gap-2">
                     <User className="w-5 h-5 text-blue-600" />
@@ -226,7 +253,7 @@ const Navbar = () => {
                       <Link
                         key={service.name}
                         to={service.path}
-                        className="text-sm font-semibold text-slate-700 hover:text-blue-600"
+                        className="text-base font-semibold text-slate-700 hover:text-blue-600"
                       >
                         {service.name}
                       </Link>
@@ -239,14 +266,14 @@ const Navbar = () => {
                     href="https://wa.me/923216900448" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-green-500 text-white text-center py-3 rounded-2xl font-bold flex items-center justify-center gap-2"
+                    className="bg-green-500 text-white text-center py-3.5 rounded-2xl font-bold flex items-center justify-center gap-2"
                   >
                     <MessageSquare className="w-5 h-5" />
                     Chat on WhatsApp
                   </a>
                   <a 
                     href="tel:+923216900448" 
-                    className="bg-blue-600 text-white text-center py-3 rounded-2xl font-bold flex items-center justify-center gap-2"
+                    className="bg-blue-600 text-white text-center py-3.5 rounded-2xl font-bold flex items-center justify-center gap-2"
                   >
                     <PhoneCall className="w-5 h-5" />
                     Call Now
@@ -262,6 +289,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isPortalModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -270,12 +298,14 @@ const Navbar = () => {
               className="absolute inset-0 bg-slate-900/70 backdrop-blur-sm"
             />
 
+            {/* Modal Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100 z-10"
             >
+              {/* Header */}
               <div className="bg-slate-900 p-6 text-white relative">
                 <button
                   onClick={closePortalModal}
@@ -294,9 +324,11 @@ const Navbar = () => {
                 </div>
               </div>
 
+              {/* Body */}
               <div className="p-6">
                 {portalStep === 'select' ? (
                   <div className="space-y-4">
+                    {/* Option 1: Max Sale ERP Web Dashboard */}
                     <a
                       href="https://bugsfixer.pp.ua"
                       target="_blank"
@@ -326,6 +358,7 @@ const Navbar = () => {
                       </div>
                     </a>
 
+                    {/* Option 2: InfraPlus Portal */}
                     <button
                       onClick={() => setPortalStep('infraplus_notice')}
                       className="w-full text-left group block p-5 rounded-2xl border-2 border-slate-100 hover:border-indigo-500 bg-slate-50/50 hover:bg-indigo-50/30 transition-all duration-300"
@@ -354,6 +387,7 @@ const Navbar = () => {
                     </button>
                   </div>
                 ) : (
+                  /* InfraPlus Pre-Production / Early Access View */
                   <div className="space-y-4">
                     <button
                       onClick={() => setPortalStep('select')}
