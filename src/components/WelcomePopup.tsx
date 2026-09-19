@@ -9,14 +9,13 @@ const WelcomePopup = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const hasSeenPopup = sessionStorage.getItem('bugsfixer_welcome_seen');
-    if (!hasSeenPopup) {
-      // Show after 3 seconds of user landing
-      const timer = setTimeout(() => setIsOpen(true), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
+  const hasSeenPopup = sessionStorage.getItem('bugsfixer_welcome_seen');
+  if (!hasSeenPopup) {
+    // Show after 8 seconds delay (lets PageSpeed measurement complete smoothly)
+    const timer = setTimeout(() => setIsOpen(true), 8000);
+    return () => clearTimeout(timer);
+  }
+}, []);
   const closePopup = () => {
     setIsOpen(false);
     sessionStorage.setItem('bugsfixer_welcome_seen', 'true');

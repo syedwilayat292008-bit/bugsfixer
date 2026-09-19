@@ -8,13 +8,13 @@ const CookieConsent = () => {
   const [showDetails, setShowDetails] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem('bugsfixer_cookie_consent');
-    if (!consent) {
-      // Show after 1.5 seconds delay for better UX
-      const timer = setTimeout(() => setIsVisible(true), 1500);
-      return () => clearTimeout(timer);
-    }
-  }, []);
+  const consent = localStorage.getItem('bugsfixer_cookie_consent');
+  if (!consent) {
+    // Show after 6 seconds delay
+    const timer = setTimeout(() => setIsVisible(true), 6000);
+    return () => clearTimeout(timer);
+  }
+}, []);
 
   const handleAccept = () => {
     localStorage.setItem('bugsfixer_cookie_consent', 'accepted');
