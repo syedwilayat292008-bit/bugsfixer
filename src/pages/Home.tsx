@@ -114,7 +114,7 @@ const Home = () => {
       initials: 'MF'
     },
     {
-      name: Dr. Naveed Khan,
+      name: 'Dr.Naveed Khan',
       role: 'Admin Officer',
       company: 'Supreme Court Support Wing',
       rating: 5,
