@@ -36,6 +36,7 @@ const Footer = () => {
     { name: 'Build Bundle', path: '/build-bundle' },
     { name: 'Hardware Inventory', path: '/inventory' },
     { name: 'Contact Us', path: '/contact' },
+    { name: 'FAQ', path: '/faq' }, 
   ];
 
   const softwarePortals = [

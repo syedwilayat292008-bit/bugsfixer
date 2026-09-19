@@ -15,6 +15,7 @@ import Inventory from './pages/Inventory';
 import ScrollToTop from './components/ScrollToTop';
 import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import FAQ from './pages/FAQ';
 
 // --- Popups ---
 import CookieConsent from './components/CookieConsent';
@@ -46,6 +47,7 @@ const AnimatedRoutes = () => {
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
       </motion.div>
     </AnimatePresence>
