@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   ChevronDown, Search, ArrowLeft, MessageSquare, 
   PhoneCall, ShieldCheck, Monitor, Cpu, Lock, 
   Wifi, Wrench, HelpCircle, Star, Clock, 
-  CreditCard, MapPin, CheckCircle2
+  CreditCard, MapPin
 } from 'lucide-react';
 
 // --- FAQ Data Organized by Category ---
@@ -289,242 +290,263 @@ const FAQ = () => {
   const totalFaqs = faqCategories.reduce((sum, cat) => sum + cat.faqs.length, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      
-      {/* SEO JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema()) }}
-      />
+    <>
+      {/* Dynamic SEO Meta Tags & Google Structured Data via React Helmet Async */}
+      <Helmet>
+        <title>BugsFixer FAQ – Answers to IT Services & ERP Questions</title>
+        <meta name="description" content="Find comprehensive answers to your questions about our CCTV installations, laptop & motherboard repairs, biometric locks, network setups, and Max Sale ERP systems." />
+        <meta name="keywords" content="BugsFixer FAQ, IT support questions, CCTV system cost Pakistan, laptop repair prices, Max Sale ERP tutorial, Peshawar hardware repair" />
+        <link rel="canonical" href="https://bugsfixerweb.pp.ua/faq" />
 
-      {/* Hero Header */}
-      <div className="relative bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-1/3 w-96 h-96 bg-blue-500 rounded-full blur-[128px]" />
-          <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-indigo-500 rounded-full blur-[128px]" />
+        {/* JSON-LD Schema integration directly into Document Head */}
+        <script type="application/ld+json">
+          {JSON.stringify(generateFAQSchema())}
+        </script>
+
+        {/* Open Graph Tags (Facebook & WhatsApp Previews) */}
+        <meta property="og:title" content="BugsFixer Pakistan – Frequently Asked Questions (FAQ)" />
+        <meta property="og:description" content="Got queries about IT setups or corporate contracts? Get answers immediately about CCTV setups, warranties, repairs, and software licenses." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bugsfixerweb.pp.ua/faq" />
+        <meta property="og:image" content="https://i.postimg.cc/fRbhDWPx/logo-7edf2235d9195452fb1f-(1).png" />
+
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Frequently Asked Questions | BugsFixer Pakistan" />
+        <meta name="twitter:description" content="Find pricing, warranties, specifications, and timelines regarding our technical deployment scopes." />
+        <meta name="twitter:image" content="https://i.postimg.cc/fRbhDWPx/logo-7edf2235d9195452fb1f-(1).png" />
+      </Helmet>
+
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+        {/* Hero Header */}
+        <div className="relative bg-slate-900 overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-1/3 w-96 h-96 bg-blue-500 rounded-full blur-[128px]" />
+            <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-indigo-500 rounded-full blur-[128px]" />
+          </div>
+
+          <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-16 sm:pb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Link 
+                to="/" 
+                className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-6 group"
+              >
+                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                <span className="text-sm font-semibold">Back to Home</span>
+              </Link>
+
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-blue-600 p-3 rounded-2xl">
+                  <HelpCircle className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+                    Frequently Asked Questions
+                  </h1>
+                </div>
+              </div>
+
+              <p className="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed mt-4">
+                Find quick answers to common questions about our IT services, pricing, 
+                warranties, and support. Can't find what you need? Chat with us on WhatsApp!
+              </p>
+
+              <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
+                <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
+                  <HelpCircle className="w-4 h-4 text-blue-400" />
+                  {totalFaqs}+ Questions Answered
+                </span>
+                <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
+                  <Clock className="w-4 h-4 text-emerald-400" />
+                  Updated July 2025
+                </span>
+              </div>
+
+              {/* Search Bar */}
+              <div className="mt-8 max-w-xl">
+                <div className="relative">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search FAQs... e.g. CCTV cost, laptop repair, warranty"
+                    className="w-full pl-12 pr-4 py-3.5 bg-slate-800/80 border border-slate-700 rounded-2xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-16 sm:pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link 
-              to="/" 
-              className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-6 group"
+        {/* Main Content */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="max-w-4xl mx-auto">
+
+            {/* Category Filter Pills */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-wrap gap-2 mb-10"
             >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-sm font-semibold">Back to Home</span>
-            </Link>
-
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-blue-600 p-3 rounded-2xl">
-                <HelpCircle className="w-7 h-7 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
-                  Frequently Asked Questions
-                </h1>
-              </div>
-            </div>
-
-            <p className="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed mt-4">
-              Find quick answers to common questions about our IT services, pricing, 
-              warranties, and support. Can't find what you need? Chat with us on WhatsApp!
-            </p>
-
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
-              <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
-                <HelpCircle className="w-4 h-4 text-blue-400" />
-                {totalFaqs}+ Questions Answered
-              </span>
-              <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
-                <Clock className="w-4 h-4 text-emerald-400" />
-                Updated July 2025
-              </span>
-            </div>
-
-            {/* Search Bar */}
-            <div className="mt-8 max-w-xl">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search FAQs... e.g. CCTV cost, laptop repair, warranty"
-                  className="w-full pl-12 pr-4 py-3.5 bg-slate-800/80 border border-slate-700 rounded-2xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
-                />
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="max-w-4xl mx-auto">
-
-          {/* Category Filter Pills */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-wrap gap-2 mb-10"
-          >
-            <button
-              onClick={() => setActiveCategory(null)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all ${
-                !activeCategory 
-                  ? 'bg-slate-900 text-white shadow-lg' 
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              All ({totalFaqs})
-            </button>
-            {faqCategories.map(cat => (
               <button
-                key={cat.id}
-                onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 ${
-                  activeCategory === cat.id 
+                onClick={() => setActiveCategory(null)}
+                className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all ${
+                  !activeCategory 
                     ? 'bg-slate-900 text-white shadow-lg' 
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >
-                {cat.title.split(' ')[0]}
+                All ({totalFaqs})
               </button>
-            ))}
-          </motion.div>
+              {faqCategories.map(cat => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 ${
+                    activeCategory === cat.id 
+                      ? 'bg-slate-900 text-white shadow-lg' 
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  {cat.title.split(' ')[0]}
+                </button>
+              ))}
+            </motion.div>
 
-          {/* FAQ Categories */}
-          {filteredCategories.length === 0 ? (
-            <div className="text-center py-16">
-              <Search className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-              <h3 className="text-xl font-black text-slate-900 mb-2">No Results Found</h3>
-              <p className="text-slate-500 text-sm">Try a different search term or browse all categories.</p>
-              <button
-                onClick={() => { setSearchQuery(''); setActiveCategory(null); }}
-                className="mt-4 text-blue-600 font-bold text-sm hover:underline"
-              >
-                Clear Filters
-              </button>
-            </div>
-          ) : (
-            <div className="space-y-12">
-              {filteredCategories.map((category) => {
-                const c = colorMap[category.color] || colorMap.blue;
-                return (
-                  <section key={category.id}>
-                    {/* Category Header */}
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className={`p-2.5 rounded-xl ${c.icon}`}>
-                        {category.icon}
+            {/* FAQ Categories */}
+            {filteredCategories.length === 0 ? (
+              <div className="text-center py-16">
+                <Search className="w-12 h-12 text-slate-300 mx-auto mb-4" />
+                <h3 className="text-xl font-black text-slate-900 mb-2">No Results Found</h3>
+                <p className="text-slate-500 text-sm">Try a different search term or browse all categories.</p>
+                <button
+                  onClick={() => { setSearchQuery(''); setActiveCategory(null); }}
+                  className="mt-4 text-blue-600 font-bold text-sm hover:underline"
+                >
+                  Clear Filters
+                </button>
+              </div>
+            ) : (
+              <div className="space-y-12">
+                {filteredCategories.map((category) => {
+                  const c = colorMap[category.color] || colorMap.blue;
+                  return (
+                    <section key={category.id}>
+                      {/* Category Header */}
+                      <div className="flex items-center gap-3 mb-5">
+                        <div className={`p-2.5 rounded-xl ${c.icon}`}>
+                          {category.icon}
+                        </div>
+                        <h2 className="text-xl sm:text-2xl font-black text-slate-900">
+                          {category.title}
+                        </h2>
+                        <span className="text-xs font-bold text-slate-400 bg-slate-100 px-2.5 py-1 rounded-lg">
+                          {category.faqs.length}
+                        </span>
                       </div>
-                      <h2 className="text-xl sm:text-2xl font-black text-slate-900">
-                        {category.title}
-                      </h2>
-                      <span className="text-xs font-bold text-slate-400 bg-slate-100 px-2.5 py-1 rounded-lg">
-                        {category.faqs.length}
-                      </span>
-                    </div>
 
-                    {/* FAQ Items */}
-                    <div className="space-y-3">
-                      {category.faqs.map((faq, index) => (
-                        <FAQItem
-                          key={index}
-                          question={faq.question}
-                          answer={faq.answer}
-                          index={index}
-                          color={category.color}
-                        />
-                      ))}
-                    </div>
-                  </section>
-                );
-              })}
-            </div>
-          )}
+                      {/* FAQ Items */}
+                      <div className="space-y-3">
+                        {category.faqs.map((faq, index) => (
+                          <FAQItem
+                            key={index}
+                            question={faq.question}
+                            answer={faq.answer}
+                            index={index}
+                            color={category.color}
+                          />
+                        ))}
+                      </div>
+                    </section>
+                  );
+                })}
+              </div>
+            )}
 
-          {/* Bottom CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-16 bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px]" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-600/10 rounded-full blur-[80px]" />
-            
-            <div className="relative z-10">
-              <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
-                Still Have Questions?
-              </h3>
-              <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
-                Our expert team is ready to help you with any IT service query. 
-                Get instant answers via WhatsApp or schedule a free consultation.
+            {/* Bottom CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-16 bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px]" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-600/10 rounded-full blur-[80px]" />
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
+                  Still Have Questions?
+                </h3>
+                <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
+                  Our expert team is ready to help you with any IT service query. 
+                  Get instant answers via WhatsApp or schedule a free consultation.
+                </p>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <a
+                    href="https://wa.me/923216900448?text=Assalam-o-Alaikum!%20I%20have%20a%20question%20about%20your%20IT%20services."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all shadow-lg"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    Ask on WhatsApp
+                  </a>
+                  <a
+                    href="tel:+923216900448"
+                    className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all"
+                  >
+                    <PhoneCall className="w-4 h-4" />
+                    Call Now
+                  </a>
+                </div>
+
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500">
+                  <span className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5" />
+                    Shaid Plaza, Peshawar
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5" />
+                    Mon–Sat, 10AM–9PM
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Star className="w-3.5 h-3.5" />
+                    1000+ Happy Clients
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* SEO Content Block */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="mt-12 text-center"
+            >
+              <p className="text-xs text-slate-400 leading-relaxed max-w-2xl mx-auto">
+                BugsFixer is Pakistan's trusted IT service center offering CCTV installation in Peshawar, 
+                laptop repair services, biometric attendance systems, PBX telephone networking, 
+                and Max Sale ERP software. Serving businesses and individuals across KPK and Pakistan 
+                with professional, affordable, and reliable technology solutions since establishment.
               </p>
+            </motion.div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
-                  href="https://wa.me/923216900448?text=Assalam-o-Alaikum!%20I%20have%20a%20question%20about%20your%20IT%20services."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all shadow-lg"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  Ask on WhatsApp
-                </a>
-                <a
-                  href="tel:+923216900448"
-                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all"
-                >
-                  <PhoneCall className="w-4 h-4" />
-                  Call Now
-                </a>
-              </div>
-
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500">
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5" />
-                  Shaid Plaza, Peshawar
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5" />
-                  Mon–Sat, 10AM–9PM
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Star className="w-3.5 h-3.5" />
-                  1000+ Happy Clients
-                </span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* SEO Content Block */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="mt-12 text-center"
-          >
-            <p className="text-xs text-slate-400 leading-relaxed max-w-2xl mx-auto">
-              BugsFixer is Pakistan's trusted IT service center offering CCTV installation in Peshawar, 
-              laptop repair services, biometric attendance systems, PBX telephone networking, 
-              and Max Sale ERP software. Serving businesses and individuals across KPK and Pakistan 
-              with professional, affordable, and reliable technology solutions since establishment.
+            {/* Footer Note */}
+            <p className="text-center text-xs text-slate-400 mt-8">
+              © {new Date().getFullYear()} BugsFixer. All rights reserved.
             </p>
-          </motion.div>
-
-          {/* Footer Note */}
-          <p className="text-center text-xs text-slate-400 mt-8">
-            © {new Date().getFullYear()} BugsFixer. All rights reserved.
-          </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

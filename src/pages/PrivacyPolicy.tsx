@@ -1,10 +1,11 @@
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   Shield, Eye, Database, Lock, Cookie, UserCheck, 
   AlertTriangle, Phone, Mail, MapPin, ChevronRight, 
   FileText, ArrowLeft, Globe, Smartphone, Server,
-  Trash2, RefreshCw, Bell, Users
+  RefreshCw, Bell, Users
 } from 'lucide-react';
 
 const sections = [
@@ -305,254 +306,277 @@ You also have the right to lodge a complaint with the relevant Pakistani data pr
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      
-      {/* Hero Header */}
-      <div className="relative bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-indigo-500 rounded-full blur-[128px]" />
-          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-[128px]" />
-        </div>
+    <>
+      {/* Dynamic SEO Meta Tags via React Helmet Async */}
+      <Helmet>
+        <title>Privacy Policy | BugsFixer Pakistan</title>
+        <meta name="description" content="Read the official Privacy Policy of BugsFixer Pakistan. Learn how we protect client data, manage portal access, and comply with Pakistan's PECA 2016 regulations." />
+        <meta name="keywords" content="BugsFixer Privacy Policy, PECA 2016 compliance, data protection Pakistan, IT services privacy, ERP client data security" />
+        <link rel="canonical" href="https://bugsfixerweb.pp.ua/privacy" />
 
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-16 sm:pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link 
-              to="/" 
-              className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-6 group"
-            >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-sm font-semibold">Back to Home</span>
-            </Link>
+        {/* Open Graph Tags (Facebook & WhatsApp Previews) */}
+        <meta property="og:title" content="Privacy Policy | BugsFixer Pakistan" />
+        <meta property="og:description" content="Your data security and privacy commitment across BugsFixer technical services and client portals." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bugsfixerweb.pp.ua/privacy" />
+        <meta property="og:image" content="https://i.postimg.cc/fRbhDWPx/logo-7edf2235d9195452fb1f-(1).png" />
 
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-indigo-600 p-3 rounded-2xl">
-                <Shield className="w-7 h-7 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
-                  Privacy Policy
-                </h1>
-              </div>
-            </div>
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Privacy Policy | BugsFixer Pakistan" />
+        <meta name="twitter:description" content="PECA 2016 compliant privacy policy governing hardware support, CCTV footage, and ERP databases." />
+        <meta name="twitter:image" content="https://i.postimg.cc/fRbhDWPx/logo-7edf2235d9195452fb1f-(1).png" />
+      </Helmet>
 
-            <p className="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed mt-4">
-              Your privacy matters to us. This policy explains how BugsFixer collects, 
-              uses, and protects your personal information across all our services and platforms.
-            </p>
-
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
-              <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
-                <FileText className="w-4 h-4 text-indigo-400" />
-                Last Updated: July 2025
-              </span>
-              <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
-                <Lock className="w-4 h-4 text-blue-400" />
-                PECA 2016 Compliant
-              </span>
-              <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
-                <Globe className="w-4 h-4 text-emerald-400" />
-                Pakistan Jurisdiction
-              </span>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="max-w-4xl mx-auto">
-          
-          {/* Trust Banner */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-blue-50 border border-blue-200 rounded-2xl p-5 sm:p-6 mb-10 flex items-start gap-4"
-          >
-            <Lock className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <h3 className="font-extrabold text-blue-900 text-sm sm:text-base">Our Privacy Commitment</h3>
-              <p className="text-blue-700 text-sm mt-1 leading-relaxed">
-                BugsFixer does NOT sell your personal data to third parties. We collect only the 
-                information necessary to deliver our IT services, maintain your client portals, 
-                and comply with Pakistani law. Your data is encrypted, access-controlled, and 
-                retained only as long as legally required. You have full rights to access, 
-                correct, or delete your data at any time.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Quick Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-10"
-          >
-            {[
-              { label: 'Data Sold', value: '0%', color: 'text-green-600 bg-green-50 border-green-200' },
-              { label: 'Encryption', value: 'AES-256', color: 'text-blue-600 bg-blue-50 border-blue-200' },
-              { label: 'Breach Response', value: '<72hrs', color: 'text-amber-600 bg-amber-50 border-amber-200' },
-              { label: 'Data Requests', value: '15 Days', color: 'text-indigo-600 bg-indigo-50 border-indigo-200' },
-            ].map((stat) => (
-              <div key={stat.label} className={`${stat.color} border rounded-2xl p-4 text-center`}>
-                <div className={`text-lg sm:text-xl font-black ${stat.color.split(' ')[0]}`}>{stat.value}</div>
-                <div className="text-xs font-bold text-slate-500 mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Table of Contents */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35 }}
-            className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 mb-10 shadow-sm"
-          >
-            <h2 className="text-lg font-black text-slate-900 mb-4 flex items-center gap-2">
-              <FileText className="w-5 h-5 text-indigo-600" />
-              Table of Contents
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {sections.map((section) => (
-                <a
-                  key={section.id}
-                  href={`#${section.id}`}
-                  className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 px-3 py-2 rounded-xl transition-all group"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-0.5 transition-all" />
-                  {section.title}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* All Sections */}
-          <div className="space-y-8">
-            {sections.map((section, index) => (
-              <motion.section
-                key={section.id}
-                id={section.id}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4, delay: index * 0.03 }}
-                className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="bg-slate-50 border-b border-slate-100 px-6 sm:px-8 py-4 flex items-center gap-3">
-                  <div className="text-indigo-600 bg-indigo-100 p-2 rounded-xl">
-                    {section.icon}
-                  </div>
-                  <h2 className="text-lg sm:text-xl font-black text-slate-900">
-                    {section.title}
-                  </h2>
-                </div>
-
-                <div className="px-6 sm:px-8 py-6">
-                  <div className="text-slate-600 text-sm sm:text-base leading-relaxed whitespace-pre-line">
-                    {section.content}
-                  </div>
-                </div>
-              </motion.section>
-            ))}
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+        
+        {/* Hero Header */}
+        <div className="relative bg-slate-900 overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-1/4 w-96 h-96 bg-indigo-500 rounded-full blur-[128px]" />
+            <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-[128px]" />
           </div>
 
-          {/* Bottom CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-16 bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-600/10 rounded-full blur-[80px]" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px]" />
-            
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 bg-indigo-500/20 border border-indigo-500/30 px-4 py-1.5 rounded-full mb-6">
-                <Shield className="w-4 h-4 text-indigo-400" />
-                <span className="text-xs font-bold text-indigo-300 uppercase tracking-wider">Your Data is Safe With Us</span>
+          <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-16 sm:pb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Link 
+                to="/" 
+                className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-6 group"
+              >
+                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                <span className="text-sm font-semibold">Back to Home</span>
+              </Link>
+
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-indigo-600 p-3 rounded-2xl">
+                  <Shield className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+                    Privacy Policy
+                  </h1>
+                </div>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
-                Questions About Your Privacy?
-              </h3>
-              <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
-                Want to access, correct, or delete your data? Our Data Protection Officer 
-                is available to assist you within 2 business days.
+              <p className="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed mt-4">
+                Your privacy matters to us. This policy explains how BugsFixer collects, 
+                uses, and protects your personal information across all our services and platforms.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
-                  href="https://wa.me/923216900448?text=Assalam-o-Alaikum!%20I%20have%20a%20privacy%20or%20data%20related%20query."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all shadow-lg"
-                >
-                  <Smartphone className="w-4 h-4" />
-                  WhatsApp Us
-                </a>
-                <a
-                  href="mailto:jeekhurram@yahoo.com?subject=Privacy%20Policy%20Inquiry"
-                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all"
-                >
-                  <Mail className="w-4 h-4" />
-                  Email DPO
-                </a>
+              <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
+                <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
+                  <FileText className="w-4 h-4 text-indigo-400" />
+                  Last Updated: July 2025
+                </span>
+                <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
+                  <Lock className="w-4 h-4 text-blue-400" />
+                  PECA 2016 Compliant
+                </span>
+                <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
+                  <Globe className="w-4 h-4 text-emerald-400" />
+                  Pakistan Jurisdiction
+                </span>
               </div>
+            </motion.div>
+          </div>
+        </div>
 
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500">
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5" />
-                  Pakistan
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5" />
-                  +92 321 6900448
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5" />
-                  jeekhurram@yahoo.com
-                </span>
+        {/* Main Content */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="max-w-4xl mx-auto">
+            
+            {/* Trust Banner */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-blue-50 border border-blue-200 rounded-2xl p-5 sm:p-6 mb-10 flex items-start gap-4"
+            >
+              <Lock className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <h3 className="font-extrabold text-blue-900 text-sm sm:text-base">Our Privacy Commitment</h3>
+                <p className="text-blue-700 text-sm mt-1 leading-relaxed">
+                  BugsFixer does NOT sell your personal data to third parties. We collect only the 
+                  information necessary to deliver our IT services, maintain your client portals, 
+                  and comply with Pakistani law. Your data is encrypted, access-controlled, and 
+                  retained only as long as legally required. You have full rights to access, 
+                  correct, or delete your data at any time.
+                </p>
               </div>
+            </motion.div>
+
+            {/* Quick Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-10"
+            >
+              {[
+                { label: 'Data Sold', value: '0%', color: 'text-green-600 bg-green-50 border-green-200' },
+                { label: 'Encryption', value: 'AES-256', color: 'text-blue-600 bg-blue-50 border-blue-200' },
+                { label: 'Breach Response', value: '<72hrs', color: 'text-amber-600 bg-amber-50 border-amber-200' },
+                { label: 'Data Requests', value: '15 Days', color: 'text-indigo-600 bg-indigo-50 border-indigo-200' },
+              ].map((stat) => (
+                <div key={stat.label} className={`${stat.color} border rounded-2xl p-4 text-center`}>
+                  <div className={`text-lg sm:text-xl font-black ${stat.color.split(' ')[0]}`}>{stat.value}</div>
+                  <div className="text-xs font-bold text-slate-500 mt-1">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Table of Contents */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 mb-10 shadow-sm"
+            >
+              <h2 className="text-lg font-black text-slate-900 mb-4 flex items-center gap-2">
+                <FileText className="w-5 h-5 text-indigo-600" />
+                Table of Contents
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {sections.map((section) => (
+                  <a
+                    key={section.id}
+                    href={`#${section.id}`}
+                    className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 px-3 py-2 rounded-xl transition-all group"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-0.5 transition-all" />
+                    {section.title}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* All Sections */}
+            <div className="space-y-8">
+              {sections.map((section, index) => (
+                <motion.section
+                  key={section.id}
+                  id={section.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4, delay: index * 0.03 }}
+                  className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="bg-slate-50 border-b border-slate-100 px-6 sm:px-8 py-4 flex items-center gap-3">
+                    <div className="text-indigo-600 bg-indigo-100 p-2 rounded-xl">
+                      {section.icon}
+                    </div>
+                    <h2 className="text-lg sm:text-xl font-black text-slate-900">
+                      {section.title}
+                    </h2>
+                  </div>
+
+                  <div className="px-6 sm:px-8 py-6">
+                    <div className="text-slate-600 text-sm sm:text-base leading-relaxed whitespace-pre-line">
+                      {section.content}
+                    </div>
+                  </div>
+                </motion.section>
+              ))}
             </div>
-          </motion.div>
 
-          {/* Related Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link 
-              to="/terms" 
-              className="text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors flex items-center gap-1"
+            {/* Bottom CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-16 bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden"
             >
-              <FileText className="w-4 h-4" />
-              View Terms & Conditions
-            </Link>
-            <span className="hidden sm:inline text-slate-300">|</span>
-            <Link 
-              to="/contact" 
-              className="text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors flex items-center gap-1"
-            >
-              <Phone className="w-4 h-4" />
-              Contact Support
-            </Link>
-          </motion.div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-600/10 rounded-full blur-[80px]" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px]" />
+              
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 bg-indigo-500/20 border border-indigo-500/30 px-4 py-1.5 rounded-full mb-6">
+                  <Shield className="w-4 h-4 text-indigo-400" />
+                  <span className="text-xs font-bold text-indigo-300 uppercase tracking-wider">Your Data is Safe With Us</span>
+                </div>
 
-          {/* Footer Note */}
-          <p className="text-center text-xs text-slate-400 mt-10 leading-relaxed">
-            © {new Date().getFullYear()} BugsFixer. All rights reserved. 
-            This Privacy Policy is governed by the laws of the Islamic Republic of Pakistan.
-          </p>
+                <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
+                  Questions About Your Privacy?
+                </h3>
+                <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
+                  Want to access, correct, or delete your data? Our Data Protection Officer 
+                  is available to assist you within 2 business days.
+                </p>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <a
+                    href="https://wa.me/923216900448?text=Assalam-o-Alaikum!%20I%20have%20a%20privacy%20or%20data%20related%20query."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all shadow-lg"
+                  >
+                    <Smartphone className="w-4 h-4" />
+                    WhatsApp Us
+                  </a>
+                  <a
+                    href="mailto:jeekhurram@yahoo.com?subject=Privacy%20Policy%20Inquiry"
+                    className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all"
+                  >
+                    <Mail className="w-4 h-4" />
+                    Email DPO
+                  </a>
+                </div>
+
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500">
+                  <span className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5" />
+                    Pakistan
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Phone className="w-3.5 h-3.5" />
+                    +92 321 6900448
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Mail className="w-3.5 h-3.5" />
+                    jeekhurram@yahoo.com
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Related Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <Link 
+                to="/terms" 
+                className="text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors flex items-center gap-1"
+              >
+                <FileText className="w-4 h-4" />
+                View Terms & Conditions
+              </Link>
+              <span className="hidden sm:inline text-slate-300">|</span>
+              <Link 
+                to="/contact" 
+                className="text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors flex items-center gap-1"
+              >
+                <Phone className="w-4 h-4" />
+                Contact Support
+              </Link>
+            </motion.div>
+
+            {/* Footer Note */}
+            <p className="text-center text-xs text-slate-400 mt-10 leading-relaxed">
+              © {new Date().getFullYear()} BugsFixer. All rights reserved. 
+              This Privacy Policy is governed by the laws of the Islamic Republic of Pakistan.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

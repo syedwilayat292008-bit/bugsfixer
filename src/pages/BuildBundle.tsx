@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Camera, Network, Smartphone, Laptop, Zap, Phone, ShieldCheck, 
-  Download, MessageSquare, Info, ShoppingCart, User, Trash2, 
-  Package, Lock, Layers, CheckCircle2, Plus, Minus, Monitor, ArrowRight, Settings, FileText
+  Info, ShoppingCart, User, Trash2, Package, Lock, Layers, 
+  CheckCircle2, Plus, Minus, Monitor, ArrowRight, Settings, FileText, MessageSquare
 } from 'lucide-react';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
@@ -130,10 +131,7 @@ const BuildBundle = () => {
     nodes: 2 
   });
 
-  // --- Enterprise SEO & Init ---
   useEffect(() => {
-    document.title = "Build Your Custom IT Bundle | BugsFixer Pakistan";
-    
     const softwareParam = searchParams.get('software');
     if (softwareParam === 'essential' || softwareParam === 'plus' || softwareParam === 'professional') {
       setSoftwareSelection({
@@ -365,430 +363,453 @@ const BuildBundle = () => {
   const totalItemCount = selections.length + (softwareSelection.enabled ? 1 : 0) + hardwareCart.length;
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-28 pb-20 px-4 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-200/40 rounded-full mix-blend-multiply filter blur-[100px] animate-pulse" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-200/30 rounded-full mix-blend-multiply filter blur-[100px] animate-pulse" />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
-      </div>
-
-      <div className="max-w-[1400px] mx-auto relative z-10">
+    <>
+      {/* Dynamic SEO Meta Tags via React Helmet Async */}
+      <Helmet>
+        <title>Build Your Custom IT Bundle | BugsFixer Pakistan</title>
+        <meta name="description" content="Use our interactive IT bundle builder to customize your service requirements. Select CCTV, biometric systems, structured cabling, or Max Sale ERP software." />
+        <meta name="keywords" content="IT bundle calculator, custom IT quote Peshawar, CCTV setup calculator, ERP software price Pakistan, structured cabling estimate" />
+        <link rel="canonical" href="https://bugsfixerweb.pp.ua/build-bundle" />
         
-        {/* Header */}
-        <motion.div 
-          initial="hidden" animate="show" variants={staggerContainer}
-          className="text-center mb-16"
-        >
-          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100/50 border border-blue-200 rounded-full mb-6">
-            <Settings className="w-4 h-4 text-blue-600 animate-spin-slow" />
-            <span className="text-xs font-black text-blue-600 uppercase tracking-widest">Custom Bundle Builder</span>
-          </motion.div>
-          <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">
-            Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">IT Bundle</span>
-          </motion.h1>
-          <motion.p variants={fadeUp} className="text-slate-500 max-w-2xl mx-auto text-lg font-medium">
-            Select your CCTV, networking, Max Sale ERP software, and hardware requirements. Generate an instant custom requisition PDF or request live market rates on WhatsApp.
-          </motion.p>
-        </motion.div>
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Interactive IT Bundle Builder | BugsFixer Pakistan" />
+        <meta property="og:description" content="Select services and software, generate a custom PDF requisition, and get real-time market rates directly over WhatsApp." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bugsfixerweb.pp.ua/build-bundle" />
+        <meta property="og:image" content="https://i.postimg.cc/fRbhDWPx/logo-7edf2235d9195452fb1f-(1).png" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Build Your Custom IT Bundle | BugsFixer" />
+        <meta name="twitter:description" content="Build dynamic technical service packages and hardware requisitions instantly." />
+        <meta name="twitter:image" content="https://i.postimg.cc/fRbhDWPx/logo-7edf2235d9195452fb1f-(1).png" />
+      </Helmet>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+      <div className="min-h-screen bg-slate-50 pt-28 pb-20 px-4 relative overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-200/40 rounded-full mix-blend-multiply filter blur-[100px] animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-200/30 rounded-full mix-blend-multiply filter blur-[100px] animate-pulse" />
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
+        </div>
+
+        <div className="max-w-[1400px] mx-auto relative z-10">
           
-          {/* ============================================================ */}
-          {/* LEFT COLUMN: SELECTIONS                                      */}
-          {/* ============================================================ */}
-          <div className="lg:col-span-8 space-y-8">
-            
-            {/* 1. Client Info Section */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-              className="bg-white/80 backdrop-blur-md p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10" />
-              <div className="flex items-center gap-4 mb-8">
-                <div className="p-4 bg-blue-600 rounded-2xl text-white shadow-inner">
-                  <User size={24} />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-black text-slate-900">Client Details</h2>
-                  <p className="text-sm font-medium text-slate-500">Personalize your custom quotation requisition document.</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="relative">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 absolute top-3 left-6">Full Name / Company Name</label>
-                  <input 
-                    type="text" 
-                    className="w-full px-6 pt-8 pb-3 rounded-2xl bg-slate-50 border-2 border-transparent focus:border-blue-500 focus:bg-white transition-all outline-none font-bold text-slate-900 shadow-sm"
-                    placeholder="e.g. Valued Business Client"
-                    value={clientInfo.name}
-                    onChange={(e) => setClientInfo({ ...clientInfo, name: e.target.value })}
-                  />
-                </div>
-                <div className="relative">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 absolute top-3 left-6">WhatsApp / Contact Number</label>
-                  <input 
-                    type="text" 
-                    className="w-full px-6 pt-8 pb-3 rounded-2xl bg-slate-50 border-2 border-transparent focus:border-blue-500 focus:bg-white transition-all outline-none font-bold text-slate-900 shadow-sm"
-                    placeholder="e.g. +92 321 6900448"
-                    value={clientInfo.contact}
-                    onChange={(e) => setClientInfo({ ...clientInfo, contact: e.target.value })}
-                  />
-                </div>
-              </div>
+          {/* Header */}
+          <motion.div 
+            initial="hidden" animate="show" variants={staggerContainer}
+            className="text-center mb-16"
+          >
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100/50 border border-blue-200 rounded-full mb-6">
+              <Settings className="w-4 h-4 text-blue-600 animate-spin-slow" />
+              <span className="text-xs font-black text-blue-600 uppercase tracking-widest">Custom Bundle Builder</span>
             </motion.div>
+            <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">
+              Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">IT Bundle</span>
+            </motion.h1>
+            <motion.p variants={fadeUp} className="text-slate-500 max-w-2xl mx-auto text-lg font-medium">
+              Select your CCTV, networking, Max Sale ERP software, and hardware requirements. Generate an instant custom requisition PDF or request live market rates on WhatsApp.
+            </motion.p>
+          </motion.div>
 
-            {/* 2. MAX SALE ERP CUSTOM SOFTWARE BUILDER */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
-              className={`rounded-[2.5rem] p-8 lg:p-10 transition-all duration-500 border-2 relative overflow-hidden ${
-                softwareSelection.enabled 
-                  ? 'bg-slate-900 text-white border-blue-500 shadow-2xl shadow-blue-900/20' 
-                  : 'bg-white/80 backdrop-blur-md text-slate-900 border-slate-100 hover:border-blue-200 shadow-xl shadow-slate-200/50'
-              }`}
-            >
-              {softwareSelection.enabled && (
-                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 filter blur-[80px] rounded-full -z-10" />
-              )}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+            
+            {/* ============================================================ */}
+            {/* LEFT COLUMN: SELECTIONS                                      */}
+            {/* ============================================================ */}
+            <div className="lg:col-span-8 space-y-8">
               
-              <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
-                <div className="flex items-center gap-5">
-                  <div className={`p-4 rounded-2xl shadow-inner ${softwareSelection.enabled ? 'bg-blue-600 text-white' : 'bg-indigo-50 text-indigo-600'}`}>
-                    <Layers size={28} />
+              {/* 1. Client Info Section */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+                className="bg-white/80 backdrop-blur-md p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10" />
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="p-4 bg-blue-600 rounded-2xl text-white shadow-inner">
+                    <User size={24} />
                   </div>
                   <div>
-                    <div className="flex items-center gap-3 mb-1">
-                      <h3 className="text-2xl font-black">Max Sale ERP Software</h3>
-                      <span className={`px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ${softwareSelection.enabled ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' : 'bg-slate-100 text-slate-500 border-slate-200'}`}>
-                        Software Division
-                      </span>
-                    </div>
-                    <p className={`text-sm font-medium ${softwareSelection.enabled ? 'text-slate-300' : 'text-slate-500'}`}>
-                      Custom Python ERP, POS Billing, Master-Terminal LAN & Web Dashboard.
-                    </p>
+                    <h2 className="text-2xl font-black text-slate-900">Client Details</h2>
+                    <p className="text-sm font-medium text-slate-500">Personalize your custom quotation requisition document.</p>
                   </div>
                 </div>
-
-                <label className="flex items-center gap-3 cursor-pointer shrink-0 bg-black/5 p-2 rounded-xl border border-black/5">
-                  <span className={`text-sm font-black uppercase tracking-widest ${softwareSelection.enabled ? 'text-blue-400' : 'text-slate-400'}`}>
-                    {softwareSelection.enabled ? 'Included' : 'Add Software'}
-                  </span>
-                  <div className={`w-12 h-6 rounded-full p-1 transition-colors ${softwareSelection.enabled ? 'bg-blue-600' : 'bg-slate-300'}`}>
-                    <motion.div 
-                      layout 
-                      className="w-4 h-4 bg-white rounded-full shadow-sm"
-                      animate={{ x: softwareSelection.enabled ? 24 : 0 }}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="relative">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 absolute top-3 left-6">Full Name / Company Name</label>
+                    <input 
+                      type="text" 
+                      className="w-full px-6 pt-8 pb-3 rounded-2xl bg-slate-50 border-2 border-transparent focus:border-blue-500 focus:bg-white transition-all outline-none font-bold text-slate-900 shadow-sm"
+                      placeholder="e.g. Valued Business Client"
+                      value={clientInfo.name}
+                      onChange={(e) => setClientInfo({ ...clientInfo, name: e.target.value })}
                     />
                   </div>
-                  <input
-                    type="checkbox"
-                    className="hidden"
-                    checked={softwareSelection.enabled}
-                    onChange={(e) => setSoftwareSelection(prev => ({ ...prev, enabled: e.target.checked }))}
-                  />
-                </label>
-              </div>
-
-              <AnimatePresence>
-                {softwareSelection.enabled && (
-                  <motion.div 
-                    initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
-                    className="space-y-8 pt-6 border-t border-slate-700/50"
-                  >
-                    <div>
-                      <label className="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-4">Select Software Plan</label>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        {[
-                          { id: 'essential', title: 'Essential Plan', sub: 'Standalone POS' },
-                          { id: 'plus', title: 'Plus Plan', sub: 'Python Server (1-10 PCs)' },
-                          { id: 'professional', title: 'Professional Plan', sub: 'Mobile + Web Dashboard' },
-                        ].map(plan => (
-                          <motion.button
-                            whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                            key={plan.id} type="button"
-                            onClick={() => setSoftwareSelection(prev => ({ ...prev, plan: plan.id as any }))}
-                            className={`p-5 rounded-2xl text-left border-2 transition-all ${
-                              softwareSelection.plan === plan.id
-                                ? 'bg-blue-600/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.2)]'
-                                : 'bg-slate-800/50 border-slate-700 text-slate-400 hover:bg-slate-800'
-                            }`}
-                          >
-                            <p className="font-black text-base">{plan.title}</p>
-                            <p className="text-xs mt-1 font-medium">{plan.sub}</p>
-                          </motion.button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {softwareSelection.plan !== 'essential' && (
-                      <div className="p-5 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col md:flex-row items-center justify-between gap-6 shadow-inner">
-                        <div className="flex items-start gap-4">
-                          <div className="p-3 bg-slate-700 rounded-xl"><Monitor className="w-5 h-5 text-blue-400" /></div>
-                          <div>
-                            <p className="font-black text-sm text-white">
-                              {softwareSelection.plan === 'plus' ? 'Terminal PCs Count' : 'Business Branches Count'}
-                            </p>
-                            <p className="text-xs text-slate-400 mt-1 font-medium">
-                              {softwareSelection.plan === 'plus' ? 'Up to 10 Terminal PCs connected to 1 Master' : 'Live multi-branch dashboard synchronization'}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="flex items-center gap-2 bg-slate-900 p-2 rounded-xl border border-slate-700 shadow-sm">
-                          <button type="button" disabled={softwareSelection.nodes <= 1} onClick={() => setSoftwareSelection(prev => ({ ...prev, nodes: Math.max(1, prev.nodes - 1) }))} className="p-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white disabled:opacity-30 transition-colors"><Minus className="w-4 h-4" /></button>
-                          <span className="font-mono font-black text-2xl text-white px-4 w-16 text-center">{softwareSelection.nodes}</span>
-                          <button type="button" disabled={softwareSelection.nodes >= 10} onClick={() => setSoftwareSelection(prev => ({ ...prev, nodes: Math.min(10, prev.nodes + 1) }))} className="p-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white disabled:opacity-30 transition-colors"><Plus className="w-4 h-4" /></button>
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="flex items-center gap-4 text-xs font-medium text-blue-200 bg-blue-900/30 p-5 rounded-2xl border border-blue-500/20">
-                      <div className="p-2 bg-blue-500/20 rounded-lg shrink-0"><Info className="w-5 h-5 text-blue-400" /></div>
-                      <span><strong>Software Quotation:</strong> Customized software pricing will be quoted based on your exact node count and setup requirements in your final WhatsApp summary.</span>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-
-            {/* 3. Hardware Cart */}
-            <AnimatePresence>
-              {hardwareCart.length > 0 && (
-                <motion.div 
-                  initial="hidden" animate="show" exit={{ opacity: 0, height: 0 }} variants={scaleIn}
-                  className="bg-white p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden relative"
-                >
-                  <div className="absolute top-0 left-0 w-32 h-32 bg-emerald-50 rounded-br-full -z-10" />
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="p-4 bg-emerald-500 rounded-2xl text-white shadow-inner">
-                      <ShoppingCart size={24} />
-                    </div>
-                    <div>
-                      <h2 className="text-2xl font-black text-slate-900">Hardware Selection</h2>
-                      <p className="text-sm font-medium text-slate-500">Selected devices from our inventory network.</p>
-                    </div>
+                  <div className="relative">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 absolute top-3 left-6">WhatsApp / Contact Number</label>
+                    <input 
+                      type="text" 
+                      className="w-full px-6 pt-8 pb-3 rounded-2xl bg-slate-50 border-2 border-transparent focus:border-blue-500 focus:bg-white transition-all outline-none font-bold text-slate-900 shadow-sm"
+                      placeholder="e.g. +92 321 6900448"
+                      value={clientInfo.contact}
+                      onChange={(e) => setClientInfo({ ...clientInfo, contact: e.target.value })}
+                    />
                   </div>
-                  <motion.div variants={staggerContainer} className="space-y-4">
-                    {hardwareCart.map(item => (
-                      <motion.div key={item.id} variants={fadeUp} className="flex flex-col sm:flex-row sm:items-center justify-between p-5 bg-slate-50 rounded-2xl group transition-all hover:bg-white hover:shadow-lg border border-transparent hover:border-emerald-200 gap-4">
-                        <div className="flex items-center gap-5">
-                          <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center overflow-hidden border border-slate-100 shadow-sm shrink-0">
-                            {item.image ? <img src={item.image} alt={item.name} className="w-full h-full object-cover" /> : <Package className="text-emerald-300 w-8 h-8" />}
-                          </div>
-                          <div>
-                            <span className="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest rounded-md mb-2 inline-block">{item.category}</span>
-                            <h4 className="font-black text-slate-900 text-lg leading-tight">{item.name}</h4>
-                            <p className="text-xs font-medium text-slate-500 mt-1 line-clamp-1">{item.specs}</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center justify-between sm:justify-end gap-6 w-full sm:w-auto">
-                          <span className="text-xs font-black text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-100">Live Market Rate</span>
-                          <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => removeHardware(item.id)} className="p-3 text-rose-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors">
-                            <Trash2 size={20} />
-                          </motion.button>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* 4. Technical Services Grid */}
-            <div className="space-y-8 pt-4">
-              <div className="flex items-center gap-4 ml-2">
-                <div className="w-2 h-8 bg-blue-600 rounded-full" />
-                <h3 className="text-3xl font-black text-slate-900">Available Technical Services</h3>
-              </div>
-              
-              <div className="space-y-6">
-                {SERVICES.map((cat, idx) => (
-                  <motion.div 
-                    key={cat.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ delay: idx * 0.1, type: 'spring' }}
-                    className="bg-white rounded-[2.5rem] p-8 lg:p-10 shadow-xl shadow-slate-200/40 border border-slate-100 relative overflow-hidden"
-                  >
-                    <div className="flex items-center gap-5 mb-8 border-b border-slate-100 pb-8">
-                      <div className="p-4 bg-slate-50 text-blue-600 rounded-2xl shadow-inner border border-slate-100">
-                        {cat.icon}
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-black text-slate-900">{cat.title}</h3>
-                        <p className="text-sm font-medium text-slate-500 mt-1">{cat.description}</p>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      {cat.subServices.map(sub => {
-                        const isSelected = selections.find(s => s.subServiceId === sub.id);
-                        return (
-                          <motion.div 
-                            key={sub.id} layout
-                            onClick={() => toggleService(cat.id, sub.id)}
-                            className={`p-6 rounded-2xl border-2 transition-all cursor-pointer relative overflow-hidden ${
-                              isSelected 
-                                ? 'bg-blue-50/50 border-blue-500 shadow-[0_8px_30px_rgba(59,130,246,0.12)]' 
-                                : 'bg-slate-50 border-slate-100 hover:border-blue-200 hover:shadow-md'
-                            }`}
-                          >
-                            {isSelected && <div className="absolute top-0 right-0 w-24 h-24 bg-blue-400/10 rounded-bl-full -z-10" />}
-                            
-                            <div className="flex justify-between items-start mb-4">
-                              <h4 className={`font-black text-lg pr-8 ${isSelected ? 'text-blue-900' : 'text-slate-900'}`}>{sub.name}</h4>
-                              <div className={`absolute top-6 right-6 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
-                                isSelected ? 'bg-blue-600 border-blue-600' : 'border-slate-300 bg-white'
-                              }`}>
-                                {isSelected && <Zap size={14} className="text-white" />}
-                              </div>
-                            </div>
-                            
-                            <p className="text-xs font-bold text-slate-500 mb-6 bg-white inline-block px-3 py-1.5 rounded-lg shadow-sm border border-slate-100">
-                              Billing: <span className="text-blue-600 font-black">Market Rate</span> / {sub.unitLabel.toLowerCase().slice(0, -1)}
-                            </p>
-                            
-                            <AnimatePresence>
-                              {isSelected && (
-                                <motion.div 
-                                  initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
-                                  onClick={(e) => e.stopPropagation()} className="pt-5 border-t border-blue-200/50"
-                                >
-                                  <div className="flex flex-wrap gap-2 mb-5">
-                                    {sub.options ? (
-                                      sub.options.map(opt => (
-                                        <button
-                                          key={opt} onClick={() => updateQuantity(sub.id, opt)}
-                                          className={`px-5 py-2.5 rounded-xl text-sm font-black transition-all ${
-                                            isSelected.quantity === opt ? 'bg-blue-600 text-white shadow-md' : 'bg-white text-slate-600 hover:bg-blue-100 border border-slate-200'
-                                          }`}
-                                        >
-                                          {opt} {sub.unitLabel}
-                                        </button>
-                                      ))
-                                    ) : (
-                                      <div className="flex items-center gap-3 bg-white p-2 rounded-xl border border-slate-200 shadow-sm w-full">
-                                        <span className="text-xs font-black uppercase tracking-widest text-slate-400 pl-2">Qty:</span>
-                                        <input 
-                                          type="number" min="1"
-                                          className="w-full px-4 py-2 rounded-lg bg-slate-50 border-none outline-none font-black text-lg text-blue-900 text-right"
-                                          value={isSelected.quantity}
-                                          onChange={(e) => updateQuantity(sub.id, parseInt(e.target.value) || 1)}
-                                        />
-                                      </div>
-                                    )}
-                                  </div>
-                                  <label className="flex items-center gap-3 cursor-pointer bg-white p-4 rounded-xl border border-blue-100 hover:border-blue-300 transition-colors">
-                                    <input 
-                                      type="checkbox" className="w-5 h-5 rounded-md border-slate-300 text-blue-600 focus:ring-blue-500"
-                                      checked={isSelected.supplyItems} onChange={() => toggleSupply(sub.id)}
-                                    />
-                                    <span className="text-sm font-bold text-slate-700 leading-tight">Include Cable Structure & Optional Materials</span>
-                                  </label>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </motion.div>
-                        );
-                      })}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* ============================================================ */}
-          {/* RIGHT COLUMN: STICKY SUMMARY                                 */}
-          {/* ============================================================ */}
-          <div className="lg:col-span-4 relative">
-            <div className="sticky top-28 space-y-6">
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}
-                className="bg-[#0B1120] text-white rounded-[2.5rem] p-8 shadow-2xl border border-slate-800 relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px] pointer-events-none" />
-                
-                <h3 className="text-2xl font-black mb-6 flex items-center gap-3">
-                  <div className="w-2 h-6 bg-blue-500 rounded-full" />
-                  Bundle Overview
-                </h3>
-                
-                <div className="space-y-4 mb-8">
-                  <div className="flex justify-between items-center text-slate-400 font-medium">
-                    <span>Selected Services:</span>
-                    <span className="text-white font-black">{selections.length} Items</span>
-                  </div>
-
-                  <AnimatePresence>
-                    {softwareSelection.enabled && (
-                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="flex justify-between items-start text-blue-300 bg-blue-900/30 p-4 rounded-2xl border border-blue-500/20">
-                        <div>
-                          <span className="block font-black text-sm text-blue-100 mb-0.5">Max Sale ERP</span>
-                          <span className="text-[10px] font-bold tracking-widest uppercase">{softwareSelection.plan} Plan</span>
-                        </div>
-                        <span className="text-[10px] font-black uppercase tracking-widest bg-blue-600 text-white px-2.5 py-1 rounded-md">Configured</span>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  <div className="flex justify-between items-center text-slate-400 font-medium">
-                    <span>Hardware Devices:</span>
-                    <span className="text-white font-black">{hardwareCart.length} Items</span>
-                  </div>
-
-                  <div className="pt-6 border-t border-slate-800">
-                    <p className="text-xs text-slate-500 font-black uppercase tracking-widest mb-2">Total Package Scope</p>
-                    <p className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
-                      {totalItemCount} Total Component{totalItemCount === 1 ? '' : 's'}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-3 relative z-10">
-                  <motion.button 
-                    whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={generateServicePDF} disabled={selections.length === 0 && !softwareSelection.enabled}
-                    className={`w-full py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-3 transition-all ${
-                      selections.length === 0 && !softwareSelection.enabled ? 'bg-slate-800 text-slate-600 cursor-not-allowed border border-slate-700' : 'bg-blue-600 text-white hover:bg-blue-500 shadow-xl shadow-blue-900/40'
-                    }`}
-                  >
-                    <FileText size={18} /> Download Requisition PDF
-                  </motion.button>
-
-                  <motion.button 
-                    whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={generateHardwarePDF} disabled={hardwareCart.length === 0}
-                    className={`w-full py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-3 transition-all ${
-                      hardwareCart.length === 0 ? 'bg-slate-800 text-slate-600 cursor-not-allowed border border-slate-700' : 'bg-white text-slate-900 hover:bg-slate-100 shadow-xl'
-                    }`}
-                  >
-                    <Package size={18} /> Download Hardware List
-                  </motion.button>
-
-                  <motion.button 
-                    whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={sendWhatsApp}
-                    className="w-full py-4 mt-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-2xl font-black text-sm flex items-center justify-center gap-3 hover:from-emerald-400 hover:to-emerald-500 transition-all shadow-xl shadow-emerald-900/40"
-                  >
-                    <MessageSquare size={18} /> Request Live Market Rates
-                  </motion.button>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-slate-800 flex items-start gap-3 text-xs font-medium text-slate-400 leading-relaxed">
-                  <Info size={18} className="text-blue-400 shrink-0 mt-0.5" />
-                  <p>Due to current market rate inflation, official quotations are calculated on real-time market rates upon order confirmation.</p>
                 </div>
               </motion.div>
 
-              <div className="bg-white/80 backdrop-blur-md p-6 rounded-3xl border border-slate-100 text-center shadow-lg shadow-slate-200/50 group">
-                <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-100 group-hover:bg-blue-50 transition-colors">
-                  <Lock className="text-slate-400 group-hover:text-blue-500 transition-colors" size={20} />
+              {/* 2. MAX SALE ERP CUSTOM SOFTWARE BUILDER */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
+                className={`rounded-[2.5rem] p-8 lg:p-10 transition-all duration-500 border-2 relative overflow-hidden ${
+                  softwareSelection.enabled 
+                    ? 'bg-slate-900 text-white border-blue-500 shadow-2xl shadow-blue-900/20' 
+                    : 'bg-white/80 backdrop-blur-md text-slate-900 border-slate-100 hover:border-blue-200 shadow-xl shadow-slate-200/50'
+                }`}
+              >
+                {softwareSelection.enabled && (
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 filter blur-[80px] rounded-full -z-10" />
+                )}
+                
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
+                  <div className="flex items-center gap-5">
+                    <div className={`p-4 rounded-2xl shadow-inner ${softwareSelection.enabled ? 'bg-blue-600 text-white' : 'bg-indigo-50 text-indigo-600'}`}>
+                      <Layers size={28} />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-3 mb-1">
+                        <h3 className="text-2xl font-black">Max Sale ERP Software</h3>
+                        <span className={`px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ${softwareSelection.enabled ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' : 'bg-slate-100 text-slate-500 border-slate-200'}`}>
+                          Software Division
+                        </span>
+                      </div>
+                      <p className={`text-sm font-medium ${softwareSelection.enabled ? 'text-slate-300' : 'text-slate-500'}`}>
+                        Custom Python ERP, POS Billing, Master-Terminal LAN & Web Dashboard.
+                      </p>
+                    </div>
+                  </div>
+
+                  <label className="flex items-center gap-3 cursor-pointer shrink-0 bg-black/5 p-2 rounded-xl border border-black/5">
+                    <span className={`text-sm font-black uppercase tracking-widest ${softwareSelection.enabled ? 'text-blue-400' : 'text-slate-400'}`}>
+                      {softwareSelection.enabled ? 'Included' : 'Add Software'}
+                    </span>
+                    <div className={`w-12 h-6 rounded-full p-1 transition-colors ${softwareSelection.enabled ? 'bg-blue-600' : 'bg-slate-300'}`}>
+                      <motion.div 
+                        layout 
+                        className="w-4 h-4 bg-white rounded-full shadow-sm"
+                        animate={{ x: softwareSelection.enabled ? 24 : 0 }}
+                      />
+                    </div>
+                    <input
+                      type="checkbox"
+                      className="hidden"
+                      checked={softwareSelection.enabled}
+                      onChange={(e) => setSoftwareSelection(prev => ({ ...prev, enabled: e.target.checked }))}
+                    />
+                  </label>
                 </div>
-                <p className="text-[10px] text-slate-400 uppercase tracking-widest font-black mb-2">Business Management</p>
-                <Link to="/inventory" className="text-sm font-black text-slate-900 hover:text-blue-600 transition-colors inline-flex items-center gap-1">
-                  Access Hardware Inventory <ArrowRight size={14} />
-                </Link>
+
+                <AnimatePresence>
+                  {softwareSelection.enabled && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+                      className="space-y-8 pt-6 border-t border-slate-700/50"
+                    >
+                      <div>
+                        <label className="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-4">Select Software Plan</label>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          {[
+                            { id: 'essential', title: 'Essential Plan', sub: 'Standalone POS' },
+                            { id: 'plus', title: 'Plus Plan', sub: 'Python Server (1-10 PCs)' },
+                            { id: 'professional', title: 'Professional Plan', sub: 'Mobile + Web Dashboard' },
+                          ].map(plan => (
+                            <motion.button
+                              whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                              key={plan.id} type="button"
+                              onClick={() => setSoftwareSelection(prev => ({ ...prev, plan: plan.id as any }))}
+                              className={`p-5 rounded-2xl text-left border-2 transition-all ${
+                                softwareSelection.plan === plan.id
+                                  ? 'bg-blue-600/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.2)]'
+                                  : 'bg-slate-800/50 border-slate-700 text-slate-400 hover:bg-slate-800'
+                              }`}
+                            >
+                              <p className="font-black text-base">{plan.title}</p>
+                              <p className="text-xs mt-1 font-medium">{plan.sub}</p>
+                            </motion.button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {softwareSelection.plan !== 'essential' && (
+                        <div className="p-5 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col md:flex-row items-center justify-between gap-6 shadow-inner">
+                          <div className="flex items-start gap-4">
+                            <div className="p-3 bg-slate-700 rounded-xl"><Monitor className="w-5 h-5 text-blue-400" /></div>
+                            <div>
+                              <p className="font-black text-sm text-white">
+                                {softwareSelection.plan === 'plus' ? 'Terminal PCs Count' : 'Business Branches Count'}
+                              </p>
+                              <p className="text-xs text-slate-400 mt-1 font-medium">
+                                {softwareSelection.plan === 'plus' ? 'Up to 10 Terminal PCs connected to 1 Master' : 'Live multi-branch dashboard synchronization'}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 bg-slate-900 p-2 rounded-xl border border-slate-700 shadow-sm">
+                            <button type="button" disabled={softwareSelection.nodes <= 1} onClick={() => setSoftwareSelection(prev => ({ ...prev, nodes: Math.max(1, prev.nodes - 1) }))} className="p-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white disabled:opacity-30 transition-colors"><Minus className="w-4 h-4" /></button>
+                            <span className="font-mono font-black text-2xl text-white px-4 w-16 text-center">{softwareSelection.nodes}</span>
+                            <button type="button" disabled={softwareSelection.nodes >= 10} onClick={() => setSoftwareSelection(prev => ({ ...prev, nodes: Math.min(10, prev.nodes + 1) }))} className="p-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white disabled:opacity-30 transition-colors"><Plus className="w-4 h-4" /></button>
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="flex items-center gap-4 text-xs font-medium text-blue-200 bg-blue-900/30 p-5 rounded-2xl border border-blue-500/20">
+                        <div className="p-2 bg-blue-500/20 rounded-lg shrink-0"><Info className="w-5 h-5 text-blue-400" /></div>
+                        <span><strong>Software Quotation:</strong> Customized software pricing will be quoted based on your exact node count and setup requirements in your final WhatsApp summary.</span>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+
+              {/* 3. Hardware Cart */}
+              <AnimatePresence>
+                {hardwareCart.length > 0 && (
+                  <motion.div 
+                    initial="hidden" animate="show" exit={{ opacity: 0, height: 0 }} variants={scaleIn}
+                    className="bg-white p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden relative"
+                  >
+                    <div className="absolute top-0 left-0 w-32 h-32 bg-emerald-50 rounded-br-full -z-10" />
+                    <div className="flex items-center gap-4 mb-8">
+                      <div className="p-4 bg-emerald-500 rounded-2xl text-white shadow-inner">
+                        <ShoppingCart size={24} />
+                      </div>
+                      <div>
+                        <h2 className="text-2xl font-black text-slate-900">Hardware Selection</h2>
+                        <p className="text-sm font-medium text-slate-500">Selected devices from our inventory network.</p>
+                      </div>
+                    </div>
+                    <motion.div variants={staggerContainer} className="space-y-4">
+                      {hardwareCart.map(item => (
+                        <motion.div key={item.id} variants={fadeUp} className="flex flex-col sm:flex-row sm:items-center justify-between p-5 bg-slate-50 rounded-2xl group transition-all hover:bg-white hover:shadow-lg border border-transparent hover:border-emerald-200 gap-4">
+                          <div className="flex items-center gap-5">
+                            <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center overflow-hidden border border-slate-100 shadow-sm shrink-0">
+                              {item.image ? <img src={item.image} alt={item.name} className="w-full h-full object-cover" /> : <Package className="text-emerald-300 w-8 h-8" />}
+                            </div>
+                            <div>
+                              <span className="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest rounded-md mb-2 inline-block">{item.category}</span>
+                              <h4 className="font-black text-slate-900 text-lg leading-tight">{item.name}</h4>
+                              <p className="text-xs font-medium text-slate-500 mt-1 line-clamp-1">{item.specs}</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-between sm:justify-end gap-6 w-full sm:w-auto">
+                            <span className="text-xs font-black text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-100">Live Market Rate</span>
+                            <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => removeHardware(item.id)} className="p-3 text-rose-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors">
+                              <Trash2 size={20} />
+                            </motion.button>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* 4. Technical Services Grid */}
+              <div className="space-y-8 pt-4">
+                <div className="flex items-center gap-4 ml-2">
+                  <div className="w-2 h-8 bg-blue-600 rounded-full" />
+                  <h3 className="text-3xl font-black text-slate-900">Available Technical Services</h3>
+                </div>
+                
+                <div className="space-y-6">
+                  {SERVICES.map((cat, idx) => (
+                    <motion.div 
+                      key={cat.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ delay: idx * 0.1, type: 'spring' }}
+                      className="bg-white rounded-[2.5rem] p-8 lg:p-10 shadow-xl shadow-slate-200/40 border border-slate-100 relative overflow-hidden"
+                    >
+                      <div className="flex items-center gap-5 mb-8 border-b border-slate-100 pb-8">
+                        <div className="p-4 bg-slate-50 text-blue-600 rounded-2xl shadow-inner border border-slate-100">
+                          {cat.icon}
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-black text-slate-900">{cat.title}</h3>
+                          <p className="text-sm font-medium text-slate-500 mt-1">{cat.description}</p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        {cat.subServices.map(sub => {
+                          const isSelected = selections.find(s => s.subServiceId === sub.id);
+                          return (
+                            <motion.div 
+                              key={sub.id} layout
+                              onClick={() => toggleService(cat.id, sub.id)}
+                              className={`p-6 rounded-2xl border-2 transition-all cursor-pointer relative overflow-hidden ${
+                                isSelected 
+                                  ? 'bg-blue-50/50 border-blue-500 shadow-[0_8px_30px_rgba(59,130,246,0.12)]' 
+                                  : 'bg-slate-50 border-slate-100 hover:border-blue-200 hover:shadow-md'
+                              }`}
+                            >
+                              {isSelected && <div className="absolute top-0 right-0 w-24 h-24 bg-blue-400/10 rounded-bl-full -z-10" />}
+                              
+                              <div className="flex justify-between items-start mb-4">
+                                <h4 className={`font-black text-lg pr-8 ${isSelected ? 'text-blue-900' : 'text-slate-900'}`}>{sub.name}</h4>
+                                <div className={`absolute top-6 right-6 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
+                                  isSelected ? 'bg-blue-600 border-blue-600' : 'border-slate-300 bg-white'
+                                }`}>
+                                  {isSelected && <Zap size={14} className="text-white" />}
+                                </div>
+                              </div>
+                              
+                              <p className="text-xs font-bold text-slate-500 mb-6 bg-white inline-block px-3 py-1.5 rounded-lg shadow-sm border border-slate-100">
+                                Billing: <span className="text-blue-600 font-black">Market Rate</span> / {sub.unitLabel.toLowerCase().slice(0, -1)}
+                              </p>
+                              
+                              <AnimatePresence>
+                                {isSelected && (
+                                  <motion.div 
+                                    initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+                                    onClick={(e) => e.stopPropagation()} className="pt-5 border-t border-blue-200/50"
+                                  >
+                                    <div className="flex flex-wrap gap-2 mb-5">
+                                      {sub.options ? (
+                                        sub.options.map(opt => (
+                                          <button
+                                            key={opt} onClick={() => updateQuantity(sub.id, opt)}
+                                            className={`px-5 py-2.5 rounded-xl text-sm font-black transition-all ${
+                                              isSelected.quantity === opt ? 'bg-blue-600 text-white shadow-md' : 'bg-white text-slate-600 hover:bg-blue-100 border border-slate-200'
+                                            }`}
+                                          >
+                                            {opt} {sub.unitLabel}
+                                          </button>
+                                        ))
+                                      ) : (
+                                        <div className="flex items-center gap-3 bg-white p-2 rounded-xl border border-slate-200 shadow-sm w-full">
+                                          <span className="text-xs font-black uppercase tracking-widest text-slate-400 pl-2">Qty:</span>
+                                          <input 
+                                            type="number" min="1"
+                                            className="w-full px-4 py-2 rounded-lg bg-slate-50 border-none outline-none font-black text-lg text-blue-900 text-right"
+                                            value={isSelected.quantity}
+                                            onChange={(e) => updateQuantity(sub.id, parseInt(e.target.value) || 1)}
+                                          />
+                                        </div>
+                                      )}
+                                    </div>
+                                    <label className="flex items-center gap-3 cursor-pointer bg-white p-4 rounded-xl border border-blue-100 hover:border-blue-300 transition-colors">
+                                      <input 
+                                        type="checkbox" className="w-5 h-5 rounded-md border-slate-300 text-blue-600 focus:ring-blue-500"
+                                        checked={isSelected.supplyItems} onChange={() => toggleSupply(sub.id)}
+                                      />
+                                      <span className="text-sm font-bold text-slate-700 leading-tight">Include Cable Structure & Optional Materials</span>
+                                    </label>
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* ============================================================ */}
+            {/* RIGHT COLUMN: STICKY SUMMARY                                 */}
+            {/* ============================================================ */}
+            <div className="lg:col-span-4 relative">
+              <div className="sticky top-28 space-y-6">
+                <motion.div 
+                  initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}
+                  className="bg-[#0B1120] text-white rounded-[2.5rem] p-8 shadow-2xl border border-slate-800 relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px] pointer-events-none" />
+                  
+                  <h3 className="text-2xl font-black mb-6 flex items-center gap-3">
+                    <div className="w-2 h-6 bg-blue-500 rounded-full" />
+                    Bundle Overview
+                  </h3>
+                  
+                  <div className="space-y-4 mb-8">
+                    <div className="flex justify-between items-center text-slate-400 font-medium">
+                      <span>Selected Services:</span>
+                      <span className="text-white font-black">{selections.length} Items</span>
+                    </div>
+
+                    <AnimatePresence>
+                      {softwareSelection.enabled && (
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="flex justify-between items-start text-blue-300 bg-blue-900/30 p-4 rounded-2xl border border-blue-500/20">
+                          <div>
+                            <span className="block font-black text-sm text-blue-100 mb-0.5">Max Sale ERP</span>
+                            <span className="text-[10px] font-bold tracking-widest uppercase">{softwareSelection.plan} Plan</span>
+                          </div>
+                          <span className="text-[10px] font-black uppercase tracking-widest bg-blue-600 text-white px-2.5 py-1 rounded-md">Configured</span>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    <div className="flex justify-between items-center text-slate-400 font-medium">
+                      <span>Hardware Devices:</span>
+                      <span className="text-white font-black">{hardwareCart.length} Items</span>
+                    </div>
+
+                    <div className="pt-6 border-t border-slate-800">
+                      <p className="text-xs text-slate-500 font-black uppercase tracking-widest mb-2">Total Package Scope</p>
+                      <p className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
+                        {totalItemCount} Total Component{totalItemCount === 1 ? '' : 's'}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 relative z-10">
+                    <motion.button 
+                      whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={generateServicePDF} disabled={selections.length === 0 && !softwareSelection.enabled}
+                      className={`w-full py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-3 transition-all ${
+                        selections.length === 0 && !softwareSelection.enabled ? 'bg-slate-800 text-slate-600 cursor-not-allowed border border-slate-700' : 'bg-blue-600 text-white hover:bg-blue-500 shadow-xl shadow-blue-900/40'
+                      }`}
+                    >
+                      <FileText size={18} /> Download Requisition PDF
+                    </motion.button>
+
+                    <motion.button 
+                      whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={generateHardwarePDF} disabled={hardwareCart.length === 0}
+                      className={`w-full py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-3 transition-all ${
+                        hardwareCart.length === 0 ? 'bg-slate-800 text-slate-600 cursor-not-allowed border border-slate-700' : 'bg-white text-slate-900 hover:bg-slate-100 shadow-xl'
+                      }`}
+                    >
+                      <Package size={18} /> Download Hardware List
+                    </motion.button>
+
+                    <motion.button 
+                      whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={sendWhatsApp}
+                      className="w-full py-4 mt-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-2xl font-black text-sm flex items-center justify-center gap-3 hover:from-emerald-400 hover:to-emerald-500 transition-all shadow-xl shadow-emerald-900/40"
+                    >
+                      <MessageSquare size={18} /> Request Live Market Rates
+                    </motion.button>
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-slate-800 flex items-start gap-3 text-xs font-medium text-slate-400 leading-relaxed">
+                    <Info size={18} className="text-blue-400 shrink-0 mt-0.5" />
+                    <p>Due to current market rate inflation, official quotations are calculated on real-time market rates upon order confirmation.</p>
+                  </div>
+                </motion.div>
+
+                <div className="bg-white/80 backdrop-blur-md p-6 rounded-3xl border border-slate-100 text-center shadow-lg shadow-slate-200/50 group">
+                  <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-100 group-hover:bg-blue-50 transition-colors">
+                    <Lock className="text-slate-400 group-hover:text-blue-500 transition-colors" size={20} />
+                  </div>
+                  <p className="text-[10px] text-slate-400 uppercase tracking-widest font-black mb-2">Business Management</p>
+                  <Link to="/inventory" className="text-sm font-black text-slate-900 hover:text-blue-600 transition-colors inline-flex items-center gap-1">
+                    Access Hardware Inventory <ArrowRight size={14} />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

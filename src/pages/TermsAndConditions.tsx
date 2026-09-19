@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
@@ -194,203 +195,226 @@ We aim to respond to all legal and compliance inquiries within 2 business days.`
 
 const TermsAndConditions = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      
-      {/* Hero Header */}
-      <div className="relative bg-slate-900 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-[128px]" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500 rounded-full blur-[128px]" />
-        </div>
+    <>
+      {/* Dynamic SEO Meta Tags via React Helmet Async */}
+      <Helmet>
+        <title>Terms & Conditions | BugsFixer Pakistan</title>
+        <meta name="description" content="Read the official Terms & Conditions of BugsFixer Pakistan covering CCTV installation, hardware repairs, warranties, service agreements, and Max Sale ERP portals." />
+        <meta name="keywords" content="BugsFixer Terms and Conditions, IT service warranty Pakistan, CCTV service contract, Max Sale ERP terms, repair guarantee terms" />
+        <link rel="canonical" href="https://bugsfixerweb.pp.ua/terms" />
 
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-16 sm:pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link 
-              to="/" 
-              className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-6 group"
-            >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-sm font-semibold">Back to Home</span>
-            </Link>
+        {/* Open Graph Tags (Facebook & WhatsApp Previews) */}
+        <meta property="og:title" content="Terms & Conditions | BugsFixer Pakistan" />
+        <meta property="og:description" content="Official terms of service, payment policies, warranties, and client agreements for BugsFixer." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bugsfixerweb.pp.ua/terms" />
+        <meta property="og:image" content="https://i.postimg.cc/fRbhDWPx/logo-7edf2235d9195452fb1f-(1).png" />
 
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-blue-600 p-3 rounded-2xl">
-                <Scale className="w-7 h-7 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
-                  Terms & Conditions
-                </h1>
-              </div>
-            </div>
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Terms & Conditions | BugsFixer Pakistan" />
+        <meta name="twitter:description" content="Learn about our repair warranties, AMC terms, and legal governing guidelines." />
+        <meta name="twitter:image" content="https://i.postimg.cc/fRbhDWPx/logo-7edf2235d9195452fb1f-(1).png" />
+      </Helmet>
 
-            <p className="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed mt-4">
-              Please read these terms carefully before using BugsFixer services. 
-              By accessing our website and services, you agree to comply with these terms.
-            </p>
-
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
-              <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
-                <FileText className="w-4 h-4 text-blue-400" />
-                Last Updated: July 2025
-              </span>
-              <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
-                <Gavel className="w-4 h-4 text-indigo-400" />
-                Governed by Pakistan Law
-              </span>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="max-w-4xl mx-auto">
-          
-          {/* Important Notice Banner */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-amber-50 border border-amber-200 rounded-2xl p-5 sm:p-6 mb-10 flex items-start gap-4"
-          >
-            <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <h3 className="font-extrabold text-amber-900 text-sm sm:text-base">Important Legal Notice</h3>
-              <p className="text-amber-700 text-sm mt-1 leading-relaxed">
-                These Terms and Conditions are a legally binding document under the laws of Pakistan. 
-                By using any BugsFixer service, website, or client portal, you confirm that you have 
-                read and accepted all terms outlined below. If you are entering into this agreement on 
-                behalf of a company, you represent that you have the authority to bind that entity.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Table of Contents (Mobile Friendly) */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 mb-10 shadow-sm"
-          >
-            <h2 className="text-lg font-black text-slate-900 mb-4 flex items-center gap-2">
-              <FileText className="w-5 h-5 text-blue-600" />
-              Table of Contents
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {sections.map((section) => (
-                <a
-                  key={section.id}
-                  href={`#${section.id}`}
-                  className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded-xl transition-all group"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all" />
-                  {section.title}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* All Sections */}
-          <div className="space-y-8">
-            {sections.map((section, index) => (
-              <motion.section
-                key={section.id}
-                id={section.id}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4, delay: index * 0.03 }}
-                className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-              >
-                {/* Section Header */}
-                <div className="bg-slate-50 border-b border-slate-100 px-6 sm:px-8 py-4 flex items-center gap-3">
-                  <div className="text-blue-600 bg-blue-100 p-2 rounded-xl">
-                    {section.icon}
-                  </div>
-                  <h2 className="text-lg sm:text-xl font-black text-slate-900">
-                    {section.title}
-                  </h2>
-                </div>
-
-                {/* Section Content */}
-                <div className="px-6 sm:px-8 py-6">
-                  <div className="text-slate-600 text-sm sm:text-base leading-relaxed whitespace-pre-line">
-                    {section.content}
-                  </div>
-                </div>
-              </motion.section>
-            ))}
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+        
+        {/* Hero Header */}
+        <div className="relative bg-slate-900 overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-[128px]" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500 rounded-full blur-[128px]" />
           </div>
 
-          {/* Bottom CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-16 bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px]" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-600/10 rounded-full blur-[80px]" />
-            
-            <div className="relative z-10">
-              <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
-                Have Questions About These Terms?
-              </h3>
-              <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
-                Our team is happy to clarify any legal or service-related queries. 
-                Reach out to us anytime via WhatsApp or email.
+          <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-16 sm:pb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Link 
+                to="/" 
+                className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-6 group"
+              >
+                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                <span className="text-sm font-semibold">Back to Home</span>
+              </Link>
+
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-blue-600 p-3 rounded-2xl">
+                  <Scale className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+                    Terms & Conditions
+                  </h1>
+                </div>
+              </div>
+
+              <p className="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed mt-4">
+                Please read these terms carefully before using BugsFixer services. 
+                By accessing our website and services, you agree to comply with these terms.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
-                  href="https://wa.me/923216900448"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all shadow-lg"
-                >
-                  <Phone className="w-4 h-4" />
-                  Chat on WhatsApp
-                </a>
-                <a
-                  href="mailto:jeekhurram@yahoo.com"
-                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all"
-                >
-                  <Mail className="w-4 h-4" />
-                  Email Us
-                </a>
+              <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
+                <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
+                  <FileText className="w-4 h-4 text-blue-400" />
+                  Last Updated: July 2025
+                </span>
+                <span className="flex items-center gap-2 text-slate-500 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
+                  <Gavel className="w-4 h-4 text-indigo-400" />
+                  Governed by Pakistan Law
+                </span>
               </div>
+            </motion.div>
+          </div>
+        </div>
 
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500">
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5" />
-                  Pakistan
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5" />
-                  +92 321 6900448
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5" />
-                  support@bugsfixer.pk
-                </span>
+        {/* Main Content */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="max-w-4xl mx-auto">
+            
+            {/* Important Notice Banner */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-amber-50 border border-amber-200 rounded-2xl p-5 sm:p-6 mb-10 flex items-start gap-4"
+            >
+              <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <h3 className="font-extrabold text-amber-900 text-sm sm:text-base">Important Legal Notice</h3>
+                <p className="text-amber-700 text-sm mt-1 leading-relaxed">
+                  These Terms and Conditions are a legally binding document under the laws of Pakistan. 
+                  By using any BugsFixer service, website, or client portal, you confirm that you have 
+                  read and accepted all terms outlined below. If you are entering into this agreement on 
+                  behalf of a company, you represent that you have the authority to bind that entity.
+                </p>
               </div>
+            </motion.div>
+
+            {/* Table of Contents (Mobile Friendly) */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 mb-10 shadow-sm"
+            >
+              <h2 className="text-lg font-black text-slate-900 mb-4 flex items-center gap-2">
+                <FileText className="w-5 h-5 text-blue-600" />
+                Table of Contents
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {sections.map((section) => (
+                  <a
+                    key={section.id}
+                    href={`#${section.id}`}
+                    className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded-xl transition-all group"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all" />
+                    {section.title}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* All Sections */}
+            <div className="space-y-8">
+              {sections.map((section, index) => (
+                <motion.section
+                  key={section.id}
+                  id={section.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4, delay: index * 0.03 }}
+                  className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                >
+                  {/* Section Header */}
+                  <div className="bg-slate-50 border-b border-slate-100 px-6 sm:px-8 py-4 flex items-center gap-3">
+                    <div className="text-blue-600 bg-blue-100 p-2 rounded-xl">
+                      {section.icon}
+                    </div>
+                    <h2 className="text-lg sm:text-xl font-black text-slate-900">
+                      {section.title}
+                    </h2>
+                  </div>
+
+                  {/* Section Content */}
+                  <div className="px-6 sm:px-8 py-6">
+                    <div className="text-slate-600 text-sm sm:text-base leading-relaxed whitespace-pre-line">
+                      {section.content}
+                    </div>
+                  </div>
+                </motion.section>
+              ))}
             </div>
-          </motion.div>
 
-          {/* Footer Note */}
-          <p className="text-center text-xs text-slate-400 mt-10 leading-relaxed">
-            © {new Date().getFullYear()} BugsFixer. All rights reserved. 
-            These Terms and Conditions are governed by the laws of the Islamic Republic of Pakistan.
-          </p>
+            {/* Bottom CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-16 bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px]" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-600/10 rounded-full blur-[80px]" />
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
+                  Have Questions About These Terms?
+                </h3>
+                <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
+                  Our team is happy to clarify any legal or service-related queries. 
+                  Reach out to us anytime via WhatsApp or email.
+                </p>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <a
+                    href="https://wa.me/923216900448"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all shadow-lg"
+                  >
+                    <Phone className="w-4 h-4" />
+                    Chat on WhatsApp
+                  </a>
+                  <a
+                    href="mailto:jeekhurram@yahoo.com"
+                    className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all"
+                  >
+                    <Mail className="w-4 h-4" />
+                    Email Us
+                  </a>
+                </div>
+
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500">
+                  <span className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5" />
+                    Pakistan
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Phone className="w-3.5 h-3.5" />
+                    +92 321 6900448
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Mail className="w-3.5 h-3.5" />
+                    jeekhurram@yahoo.com
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Footer Note */}
+            <p className="text-center text-xs text-slate-400 mt-10 leading-relaxed">
+              © {new Date().getFullYear()} BugsFixer. All rights reserved. 
+              These Terms and Conditions are governed by the laws of the Islamic Republic of Pakistan.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
