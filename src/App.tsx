@@ -38,7 +38,6 @@ const AnimatedRoutes = () => {
           <Route path="/telephone-networking" element={<TelephoneNetworking />} />
           <Route path="/build-bundle" element={<BuildBundle />} />
           <Route path="/inventory" element={<Inventory />} />
-          <Route path="/admin-inventory" element={<AdminInventory />} />
         </Routes>
       </motion.div>
     </AnimatePresence>
