@@ -18,19 +18,9 @@ const staggerContainer = {
   }
 };
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
-};
-
-const fadeLeft = {
-  hidden: { opacity: 0, x: -15 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.4, ease: 'easeOut' } }
-};
-
-const fadeRight = {
-  hidden: { opacity: 0, x: 15 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.4, ease: 'easeOut' } }
+const fadeIn = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } }
 };
 
 const Home = () => {
@@ -57,6 +47,17 @@ const Home = () => {
     const encodedText = encodeURIComponent(text);
     window.open(`https://wa.me/923216900448?text=${encodedText}`, '_blank');
     closeDemoModal();
+  };
+
+  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const name = (form.elements.namedItem('fullname') as HTMLInputElement)?.value || '';
+    const email = (form.elements.namedItem('email') as HTMLInputElement)?.value || '';
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement)?.value || '';
+
+    const text = `Assalam-o-Alaikum BugsFixer!\n\n*New Website Inquiry*\n*Name:* ${name}\n*Email:* ${email || 'N/A'}\n*Message:* ${message}`;
+    window.open(`https://wa.me/923216900448?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   const services = [
@@ -162,7 +163,7 @@ const Home = () => {
                 className="lg:w-1/2 w-full text-left"
                 initial="hidden" animate="show" variants={staggerContainer}
               >
-                <motion.div variants={fadeLeft} className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-100 rounded-full mb-6 shadow-sm">
+                <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-100 rounded-full mb-6 shadow-sm">
                   <span className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-600"></span>
@@ -170,22 +171,22 @@ const Home = () => {
                   <span className="text-xs font-black text-blue-700 uppercase tracking-widest">Complete IT & Software Solutions</span>
                 </motion.div>
                 
-                <motion.h1 variants={fadeLeft} className="text-4xl sm:text-5xl lg:text-[5rem] xl:text-[5.5rem] font-black text-slate-900 leading-[1.05] mb-6 tracking-tighter">
+                <motion.h1 variants={fadeIn} className="text-4xl sm:text-5xl lg:text-[5rem] xl:text-[5.5rem] font-black text-slate-900 leading-[1.05] mb-6 tracking-tighter">
                   BugsFixer <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 block pb-2">
                     IT Excellence.
                   </span>
                 </motion.h1>
                 
-                <motion.p variants={fadeLeft} className="text-base sm:text-lg lg:text-xl text-slate-600 mb-8 leading-relaxed max-w-xl font-medium">
+                <motion.p variants={fadeIn} className="text-base sm:text-lg lg:text-xl text-slate-600 mb-8 leading-relaxed max-w-xl font-medium">
                   As Pakistan's Best IT Service Center, we deploy enterprise CCTV, 
                   Max Sale ERP software, biometric security, and high-performance networking nationwide.
                 </motion.p>
 
-                <motion.div variants={fadeLeft} className="flex flex-wrap gap-4">
+                <motion.div variants={fadeIn} className="flex flex-wrap gap-4">
                   <Link 
                     to="/build-bundle"
-                    className="group bg-blue-600 text-white px-7 py-4 rounded-full font-black text-base hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/30 flex items-center gap-3"
+                    className="group bg-blue-600 text-white px-7 py-4 rounded-full font-black text-base hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/30 flex items-center gap-3 min-h-[48px]"
                   >
                     <Settings className="w-5 h-5 animate-spin-slow" />
                     <span>Build Your Bundle</span>
@@ -196,7 +197,7 @@ const Home = () => {
                     href="https://wa.me/923216900448"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group bg-white border-2 border-slate-200 text-slate-900 px-7 py-4 rounded-full font-black text-base hover:border-slate-900 transition-all shadow-md flex items-center gap-3"
+                    className="group bg-white border-2 border-slate-200 text-slate-900 px-7 py-4 rounded-full font-black text-base hover:border-slate-900 transition-all shadow-md flex items-center gap-3 min-h-[48px]"
                   >
                     <MessageSquare className="w-5 h-5 text-green-500 group-hover:scale-110 transition-transform" />
                     Chat Now
@@ -223,7 +224,7 @@ const Home = () => {
                 className="lg:w-1/2 w-full relative min-h-[360px] sm:min-h-[500px]"
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.4 }}
               >
                 <div className="relative z-10 bg-white p-3 sm:p-4 rounded-[2.5rem] lg:rounded-[3rem] shadow-2xl shadow-blue-900/10 border border-white/50 w-full">
                   <div className="overflow-hidden rounded-[2rem] lg:rounded-[2.5rem] w-full h-[360px] sm:h-[450px] lg:h-[520px] bg-slate-100">
@@ -273,13 +274,13 @@ const Home = () => {
               variants={staggerContainer}
               className="max-w-3xl mb-16"
             >
-              <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100/50 rounded-full mb-4">
+              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100/50 rounded-full mb-4">
                 <span className="text-xs font-black text-blue-600 uppercase tracking-widest">Our Expertise</span>
               </motion.div>
-              <motion.h2 variants={fadeUp} className="text-3xl sm:text-5xl font-black text-slate-900 mb-4 tracking-tight">
+              <motion.h2 variants={fadeIn} className="text-3xl sm:text-5xl font-black text-slate-900 mb-4 tracking-tight">
                 Enterprise IT Solutions <br/> For Every Scale.
               </motion.h2>
-              <motion.p variants={fadeUp} className="text-base sm:text-xl text-slate-600 leading-relaxed">
+              <motion.p variants={fadeIn} className="text-base sm:text-xl text-slate-600 leading-relaxed">
                 From robust hardware repairs to nationwide networking structures, BugsFixer empowers your operations with zero downtime.
               </motion.p>
             </motion.div>
@@ -290,7 +291,7 @@ const Home = () => {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
               {services.map((service, index) => (
-                <motion.div key={index} variants={fadeUp}>
+                <motion.div key={index} variants={fadeIn}>
                   <Link
                     to={service.path}
                     className="group block bg-white p-8 sm:p-10 rounded-[2.5rem] shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-300 border border-slate-100 hover:border-blue-100 h-full relative overflow-hidden"
@@ -321,16 +322,16 @@ const Home = () => {
               initial="hidden" whileInView="show" viewport={{ once: true }} variants={staggerContainer}
               className="text-center max-w-4xl mx-auto mb-16"
             >
-              <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-5 py-2 bg-blue-900/40 border border-blue-500/30 rounded-full mb-4">
+              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-5 py-2 bg-blue-900/40 border border-blue-500/30 rounded-full mb-4">
                 <Layers className="w-4 h-4 text-blue-400" />
                 <span className="text-xs font-black text-blue-300 uppercase tracking-widest">
                   Software Division • Max Sale ERP
                 </span>
               </motion.div>
-              <motion.h2 variants={fadeUp} className="text-4xl sm:text-6xl font-black tracking-tighter mb-4 text-white">
+              <motion.h2 variants={fadeIn} className="text-4xl sm:text-6xl font-black tracking-tighter mb-4 text-white">
                 Control Your Business.
               </motion.h2>
-              <motion.p variants={fadeUp} className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto font-medium">
+              <motion.p variants={fadeIn} className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto font-medium">
                 Empower your retail store, wholesale business, or multi-branch enterprise with our highly customized Python-powered ERP system.
               </motion.p>
             </motion.div>
@@ -342,7 +343,7 @@ const Home = () => {
               {erpPlans.map((plan) => (
                 <motion.div
                   key={plan.name}
-                  variants={fadeUp}
+                  variants={fadeIn}
                   className={`relative bg-slate-900/60 backdrop-blur-2xl rounded-[2.5rem] p-8 border transition-all flex flex-col h-full ${
                     plan.isPopular 
                       ? 'border-blue-500 shadow-2xl bg-slate-800/80' 
@@ -377,7 +378,8 @@ const Home = () => {
                   <div className="space-y-3 pt-4 border-t border-slate-800 mt-auto">
                     <button
                       onClick={() => openDemoModal(plan.name)}
-                      className={`w-full font-black py-3.5 rounded-2xl text-xs transition-all shadow-lg flex items-center justify-center gap-2 ${
+                      aria-label={`Request free demo for ${plan.name}`}
+                      className={`w-full font-black py-3.5 rounded-2xl text-xs transition-all shadow-lg flex items-center justify-center gap-2 min-h-[44px] ${
                         plan.isPopular ? 'bg-blue-600 text-white hover:bg-blue-500' : 'bg-white text-slate-900 hover:bg-slate-100'
                       }`}
                     >
@@ -387,7 +389,8 @@ const Home = () => {
 
                     <button
                       onClick={() => navigate(`/build-bundle?software=${plan.bundleQuery}`)}
-                      className="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-3 rounded-2xl text-[11px] transition-all flex items-center justify-center gap-1.5 border border-slate-700"
+                      aria-label={`Add ${plan.name} to hardware bundle`}
+                      className="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-3 rounded-2xl text-[11px] transition-all flex items-center justify-center gap-1.5 border border-slate-700 min-h-[44px]"
                     >
                       <Plus className="w-3.5 h-3.5 text-blue-400" />
                       <span>Add to Hardware Bundle</span>
@@ -406,14 +409,14 @@ const Home = () => {
               initial="hidden" whileInView="show" viewport={{ once: true }} variants={staggerContainer}
               className="text-center max-w-3xl mx-auto mb-16"
             >
-              <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-50 border border-amber-100 rounded-full mb-4">
+              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-50 border border-amber-100 rounded-full mb-4">
                 <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                 <span className="text-xs font-black text-amber-700 uppercase tracking-widest">Client Testimonials</span>
               </motion.div>
-              <motion.h2 variants={fadeUp} className="text-3xl sm:text-5xl font-black text-slate-900 mb-3 tracking-tight">
+              <motion.h2 variants={fadeIn} className="text-3xl sm:text-5xl font-black text-slate-900 mb-3 tracking-tight">
                 Trusted by Leading Organizations
               </motion.h2>
-              <motion.p variants={fadeUp} className="text-base text-slate-500 font-medium">
+              <motion.p variants={fadeIn} className="text-base text-slate-500 font-medium">
                 Feedback from finance managers, IT heads, and operations leaders across Pakistan.
               </motion.p>
             </motion.div>
@@ -425,7 +428,7 @@ const Home = () => {
               {testimonials.map((item, index) => (
                 <motion.div
                   key={index}
-                  variants={fadeUp}
+                  variants={fadeIn}
                   className="bg-white rounded-[2rem] p-6 shadow-md border border-slate-100 flex flex-col justify-between"
                 >
                   <div>
@@ -459,7 +462,7 @@ const Home = () => {
         <section className="py-24 bg-white">
           <div className="container mx-auto px-4 lg:px-8">
             <motion.div 
-              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
               className="max-w-6xl mx-auto bg-white rounded-[3rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-slate-100"
             >
               <div className="lg:w-5/12 bg-blue-600 p-10 sm:p-14 text-white relative">
@@ -489,23 +492,58 @@ const Home = () => {
               </div>
               
               <div className="lg:w-7/12 p-10 sm:p-14">
-                <form className="space-y-4">
+                <form 
+                  action="https://wa.me/923216900448" 
+                  method="GET" 
+                  onSubmit={handleContactSubmit} 
+                  className="space-y-4"
+                  data-webmcp-tool="submit_contact_inquiry"
+                  data-webmcp-description="Submit custom IT service inquiry or quote request via WhatsApp"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <label htmlFor="cta-name" className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Full Name</label>
-                      <input id="cta-name" name="name" type="text" className="w-full px-5 py-3.5 bg-slate-50 border-2 border-slate-100 focus:border-blue-600 focus:bg-white rounded-2xl outline-none text-sm font-semibold" placeholder="Your Name" />
+                      <label htmlFor="cta-name" className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Full Name *</label>
+                      <input 
+                        id="cta-name" 
+                        name="fullname" 
+                        type="text" 
+                        required 
+                        data-webmcp-param="fullname"
+                        className="w-full px-5 py-3.5 bg-slate-50 border-2 border-slate-100 focus:border-blue-600 focus:bg-white rounded-2xl outline-none text-sm font-semibold" 
+                        placeholder="Your Name" 
+                      />
                     </div>
                     <div className="space-y-1">
                       <label htmlFor="cta-email" className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Email Address</label>
-                      <input id="cta-email" name="email" type="email" className="w-full px-5 py-3.5 bg-slate-50 border-2 border-slate-100 focus:border-blue-600 focus:bg-white rounded-2xl outline-none text-sm font-semibold" placeholder="your@email.com" />
+                      <input 
+                        id="cta-email" 
+                        name="email" 
+                        type="email" 
+                        data-webmcp-param="email"
+                        className="w-full px-5 py-3.5 bg-slate-50 border-2 border-slate-100 focus:border-blue-600 focus:bg-white rounded-2xl outline-none text-sm font-semibold" 
+                        placeholder="your@email.com" 
+                      />
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <label htmlFor="cta-message" className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Message</label>
-                    <textarea id="cta-message" name="message" rows={3} className="w-full px-5 py-3.5 bg-slate-50 border-2 border-slate-100 focus:border-blue-600 focus:bg-white rounded-2xl outline-none text-sm font-semibold resize-none" placeholder="Tell us about your IT setup or software needs..." />
+                    <label htmlFor="cta-message" className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Message *</label>
+                    <textarea 
+                      id="cta-message" 
+                      name="message" 
+                      rows={3} 
+                      required 
+                      data-webmcp-param="message"
+                      className="w-full px-5 py-3.5 bg-slate-50 border-2 border-slate-100 focus:border-blue-600 focus:bg-white rounded-2xl outline-none text-sm font-semibold resize-none" 
+                      placeholder="Tell us about your IT setup or software needs..." 
+                    />
                   </div>
-                  <button type="submit" aria-label="Send contact form message" className="w-full bg-slate-900 text-white py-4 rounded-2xl font-black text-base hover:bg-blue-600 transition-all shadow-lg">
-                    Send Message
+                  <button 
+                    type="submit" 
+                    aria-label="Send message to BugsFixer on WhatsApp" 
+                    data-webmcp-action="submit"
+                    className="w-full bg-slate-900 text-white py-4 rounded-2xl font-black text-base hover:bg-blue-600 transition-all shadow-lg min-h-[48px]"
+                  >
+                    Send Message via WhatsApp
                   </button>
                 </form>
               </div>
@@ -526,7 +564,7 @@ const Home = () => {
                 className="relative w-full max-w-lg bg-white rounded-[2rem] shadow-2xl overflow-hidden z-10"
               >
                 <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white relative">
-                  <button onClick={closeDemoModal} aria-label="Close demo modal" className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                  <button onClick={closeDemoModal} aria-label="Close demo request modal" className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
                     <X className="w-4 h-4" />
                   </button>
                   <div className="flex items-center gap-3">
@@ -539,28 +577,35 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                <form onSubmit={handleDemoSubmit} className="p-6 space-y-4 bg-slate-50">
+                <form 
+                  action="https://wa.me/923216900448" 
+                  method="GET" 
+                  onSubmit={handleDemoSubmit} 
+                  className="p-6 space-y-4 bg-slate-50"
+                  data-webmcp-tool="schedule_erp_demo"
+                  data-webmcp-description="Schedule a free demo for Max Sale ERP software"
+                >
                   <div>
                     <label htmlFor="demo-fullname" className="block text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1 flex items-center gap-1.5"><User className="w-3.5 h-3.5 text-blue-500" /> Full Name *</label>
-                    <input id="demo-fullname" name="fullname" type="text" required value={demoName} onChange={(e) => setDemoName(e.target.value)} placeholder="e.g. Syed Wail" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none" />
+                    <input id="demo-fullname" name="fullname" type="text" required value={demoName} onChange={(e) => setDemoName(e.target.value)} placeholder="e.g. Syed Wail" data-webmcp-param="fullname" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none" />
                   </div>
                   <div>
                     <label htmlFor="demo-business" className="block text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1 flex items-center gap-1.5"><Building className="w-3.5 h-3.5 text-blue-500" /> Company / Shop Name</label>
-                    <input id="demo-business" name="business" type="text" value={demoBusiness} onChange={(e) => setDemoBusiness(e.target.value)} placeholder="e.g. BugsFixer Tech" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none" />
+                    <input id="demo-business" name="business" type="text" value={demoBusiness} onChange={(e) => setDemoBusiness(e.target.value)} placeholder="e.g. BugsFixer Tech" data-webmcp-param="business" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none" />
                   </div>
                   <div>
                     <label htmlFor="demo-phone" className="block text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1 flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-blue-500" /> WhatsApp Number *</label>
-                    <input id="demo-phone" name="phone" type="text" required value={demoPhone} onChange={(e) => setDemoPhone(e.target.value)} placeholder="e.g. +92 321 6900448" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none" />
+                    <input id="demo-phone" name="phone" type="text" required value={demoPhone} onChange={(e) => setDemoPhone(e.target.value)} placeholder="e.g. +92 321 6900448" data-webmcp-param="phone" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none" />
                   </div>
                   <div>
                     <label htmlFor="demo-time" className="block text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1 flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-blue-500" /> Preferred Demo Time</label>
-                    <select id="demo-time" name="demotime" value={demoTime} onChange={(e) => setDemoTime(e.target.value)} className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none appearance-none">
+                    <select id="demo-time" name="demotime" value={demoTime} onChange={(e) => setDemoTime(e.target.value)} data-webmcp-param="demotime" className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-blue-600 bg-white text-sm font-semibold outline-none appearance-none">
                       <option value="Morning (10 AM - 1 PM)">Morning (10 AM - 1 PM)</option>
                       <option value="Afternoon (2 PM - 5 PM)">Afternoon (2 PM - 5 PM)</option>
                       <option value="Evening (6 PM - 9 PM)">Evening (6 PM - 9 PM)</option>
                     </select>
                   </div>
-                  <button type="submit" aria-label="Send ERP demo request via WhatsApp" className="w-full bg-slate-900 hover:bg-blue-600 text-white font-black py-4 rounded-2xl text-sm transition-all shadow-xl flex items-center justify-center gap-2 mt-3">
+                  <button type="submit" aria-label="Send ERP demo request via WhatsApp" data-webmcp-action="submit" className="w-full bg-slate-900 hover:bg-blue-600 text-white font-black py-4 rounded-2xl text-sm transition-all shadow-xl flex items-center justify-center gap-2 mt-3 min-h-[48px]">
                     <Send className="w-4 h-4 text-blue-400" /> Send via WhatsApp
                   </button>
                 </form>
