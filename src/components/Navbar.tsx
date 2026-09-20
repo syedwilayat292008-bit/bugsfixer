@@ -34,6 +34,7 @@ const Navbar = () => {
     setMobileServicesOpen(false);
   }, [location]);
 
+  // Prevent body scroll when mega menu is open (optional polish)
   useEffect(() => {
     if (showServices) {
       document.body.style.overflow = 'hidden';
@@ -111,7 +112,7 @@ const Navbar = () => {
 
   return (
     <>
-      {/* FULL-WIDTH NAV WRAPPER */}
+      {/* FULL-WIDTH NAV WRAPPER — mega menu is child so hover works */}
       <div
         className="fixed top-0 left-0 right-0 z-40"
         onMouseLeave={() => setShowServices(false)}
@@ -120,20 +121,28 @@ const Navbar = () => {
           className={`w-full transition-all duration-300 ${
             scrolled
               ? 'bg-white/95 backdrop-blur-md shadow-md py-2 border-b border-slate-100'
-              : 'bg-white/95 backdrop-blur-sm py-2.5 border-b border-slate-100/80'
+              : 'bg-white/95 backdrop-blur-sm py-3 border-b border-slate-100/80'
           }`}
         >
           <div className="container mx-auto px-4 lg:px-8">
             <div className="flex justify-between items-center gap-3">
               
-              {/* OFFICIAL BUGSFIXER LOGO */}
-              <Link to="/" className="flex items-center shrink-0 group">
-                <img 
-                  src="https://i.postimg.cc/mtzVdTxN/logo-7edf2235d9195452fb1f-(1).png" 
-                  alt="BugsFixer Pakistan Logo" 
-                  className="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
-                />
-              </Link>
+             {/* OFFICIAL BUGSFIXER LOGO + TEXT */}
+<Link to="/" className="flex items-center gap-2.5 group shrink-0">
+  <img 
+    src="https://i.postimg.cc/mtzVdTxN/logo-7edf2235d9195452fb1f-(1).png" 
+    alt="BugsFixer Pakistan Logo" 
+    className="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+  />
+  <div className="flex flex-col leading-none">
+    <span className="text-lg sm:text-xl font-black tracking-tighter text-slate-900">
+      Bugs<span className="text-blue-600">Fixer</span>
+    </span>
+    <span className="text-[8px] sm:text-[9px] uppercase font-bold tracking-widest text-slate-500 mt-0.5">
+      Pakistan's Best IT Center
+    </span>
+  </div>
+</Link>
 
               {/* Desktop Nav Links */}
               <div className="hidden lg:flex items-center gap-0.5">
@@ -196,7 +205,7 @@ const Navbar = () => {
         </nav>
 
         {/* ============================================================ */}
-        {/* FULL-WIDTH MEGA MENU                                         */}
+        {/* FULL-WIDTH MEGA MENU — covers entire navbar / screen width  */}
         {/* ============================================================ */}
         <AnimatePresence>
           {showServices && (
@@ -208,6 +217,7 @@ const Navbar = () => {
               className="hidden lg:block w-full bg-white border-b border-slate-200 shadow-2xl"
               onMouseEnter={() => setShowServices(true)}
             >
+              {/* Inner content constrained to container, bar itself is full width */}
               <div className="container mx-auto px-4 lg:px-8">
                 <div className="grid grid-cols-12 gap-0 min-h-[380px] max-h-[min(520px,78vh)]">
                   
@@ -313,7 +323,7 @@ const Navbar = () => {
                 </div>
               </div>
 
-              {/* Full-width bottom strip */}
+              {/* Full-width bottom strip (optional brand bar) */}
               <div className="w-full bg-slate-50 border-t border-slate-100">
                 <div className="container mx-auto px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
@@ -329,7 +339,7 @@ const Navbar = () => {
           )}
         </AnimatePresence>
 
-        {/* Dark overlay behind mega menu */}
+        {/* Dark overlay behind mega menu (click / visual depth) */}
         <AnimatePresence>
           {showServices && (
             <motion.div
