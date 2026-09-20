@@ -34,7 +34,6 @@ const Navbar = () => {
     setMobileServicesOpen(false);
   }, [location]);
 
-  // Prevent body scroll when mega menu is open (optional polish)
   useEffect(() => {
     if (showServices) {
       document.body.style.overflow = 'hidden';
@@ -112,7 +111,7 @@ const Navbar = () => {
 
   return (
     <>
-      {/* FULL-WIDTH NAV WRAPPER — mega menu is child so hover works */}
+      {/* FULL-WIDTH NAV WRAPPER */}
       <div
         className="fixed top-0 left-0 right-0 z-40"
         onMouseLeave={() => setShowServices(false)}
@@ -121,26 +120,19 @@ const Navbar = () => {
           className={`w-full transition-all duration-300 ${
             scrolled
               ? 'bg-white/95 backdrop-blur-md shadow-md py-2 border-b border-slate-100'
-              : 'bg-white/95 backdrop-blur-sm py-3 border-b border-slate-100/80'
+              : 'bg-white/95 backdrop-blur-sm py-2.5 border-b border-slate-100/80'
           }`}
         >
           <div className="container mx-auto px-4 lg:px-8">
             <div className="flex justify-between items-center gap-3">
               
-              {/* Logo */}
-              <Link to="/" className="flex items-center gap-2 group shrink-0">
-                <div className="relative">
-                  <div className="bg-blue-600 p-1.5 rounded-lg group-hover:rotate-12 transition-transform duration-300">
-                    <span className="text-white text-sm font-black tracking-tighter">BF</span>
-                  </div>
-                  <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-lg font-black tracking-tighter leading-none text-slate-900">
-                    Bugs<span className="text-blue-600">Fixer</span>
-                  </span>
-                  <span className="text-[8px] uppercase font-bold tracking-widest text-slate-500">Pakistan IT Center</span>
-                </div>
+              {/* OFFICIAL BUGSFIXER LOGO */}
+              <Link to="/" className="flex items-center shrink-0 group">
+                <img 
+                  src="https://i.postimg.cc/mtzVdTxN/logo-7edf2235d9195452fb1f-(1).png" 
+                  alt="BugsFixer Pakistan Logo" 
+                  className="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+                />
               </Link>
 
               {/* Desktop Nav Links */}
@@ -204,7 +196,7 @@ const Navbar = () => {
         </nav>
 
         {/* ============================================================ */}
-        {/* FULL-WIDTH MEGA MENU — covers entire navbar / screen width  */}
+        {/* FULL-WIDTH MEGA MENU                                         */}
         {/* ============================================================ */}
         <AnimatePresence>
           {showServices && (
@@ -216,7 +208,6 @@ const Navbar = () => {
               className="hidden lg:block w-full bg-white border-b border-slate-200 shadow-2xl"
               onMouseEnter={() => setShowServices(true)}
             >
-              {/* Inner content constrained to container, bar itself is full width */}
               <div className="container mx-auto px-4 lg:px-8">
                 <div className="grid grid-cols-12 gap-0 min-h-[380px] max-h-[min(520px,78vh)]">
                   
@@ -322,7 +313,7 @@ const Navbar = () => {
                 </div>
               </div>
 
-              {/* Full-width bottom strip (optional brand bar) */}
+              {/* Full-width bottom strip */}
               <div className="w-full bg-slate-50 border-t border-slate-100">
                 <div className="container mx-auto px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
@@ -338,7 +329,7 @@ const Navbar = () => {
           )}
         </AnimatePresence>
 
-        {/* Dark overlay behind mega menu (click / visual depth) */}
+        {/* Dark overlay behind mega menu */}
         <AnimatePresence>
           {showServices && (
             <motion.div
