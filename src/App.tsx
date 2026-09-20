@@ -80,7 +80,7 @@ function App() {
         <Navbar />
         
         {/* Main Content Area */}
-        <main className="flex-grow pt-[72px]">
+        <main className="flex-grow">
           <AnimatedRoutes />
         </main>
 
