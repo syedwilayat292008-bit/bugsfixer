@@ -1,11 +1,10 @@
-import { Link } from 'react-router-dom';
+iimport { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   MapPin, PhoneCall, Mail, Globe, Share2, ExternalLink, 
   MessageSquare, ShieldCheck, Layers, ArrowUpRight, Lock, User
 } from 'lucide-react';
 
-// --- Enterprise Animation Variants ---
 const staggerContainer = {
   hidden: { opacity: 0 },
   show: {
@@ -34,7 +33,7 @@ const Footer = () => {
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
     { name: 'Build Bundle', path: '/build-bundle' },
-    { name: 'Hardware Inventory', path: '/inventory' },
+    { name: 'Hardware Vault', path: '/inventory' },
     { name: 'Contact Us', path: '/contact' },
     { name: 'FAQ', path: '/faq' }, 
   ];
@@ -54,36 +53,34 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#0B1120] text-white pt-28 pb-12 overflow-hidden relative border-t border-slate-800">
-      {/* Top Gradient Divider Line */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
 
-      {/* Ambient Glows */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full filter blur-[140px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-600/10 rounded-full filter blur-[140px] pointer-events-none translate-y-1/2 -translate-x-1/2" />
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         
-        {/* Main Footer Grid */}
         <motion.div 
           initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}
           variants={staggerContainer}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-20"
         >
-          {/* Column 1: Brand & Tagline (Spans 2 cols on desktop) */}
+          {/* Column 1: Brand + Logo */}
           <motion.div variants={fadeUp} className="lg:col-span-2 space-y-8 pr-0 lg:pr-8">
-            <Link to="/" className="flex items-center space-x-3 group">
-              <div className="relative">
-                <div className="bg-blue-600 p-2.5 rounded-2xl group-hover:rotate-12 transition-transform duration-300 shadow-xl shadow-blue-600/30 border border-blue-400/30">
-                  <span className="text-white text-2xl font-black tracking-tighter italic">BF</span>
-                </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-[#0B1120] rounded-full" />
-              </div>
+            
+            {/* LOGO + TEXT (kept together) */}
+            <Link to="/" className="flex items-center gap-3 group">
+              <img
+                src="https://i.postimg.cc/mtzVdTxN/logo-7edf2235d9195452fb1f-(1).png"
+                alt="BugsFixer Pakistan Logo"
+                className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+              />
               <div className="flex flex-col">
-                <span className="text-3xl font-black tracking-tighter text-white">
+                <span className="text-3xl font-black tracking-tighter text-white leading-none">
                   Bugs<span className="text-blue-500">Fixer</span>
                 </span>
-                <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 -mt-1">
+                <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mt-1">
                   Pakistan's Best IT Service Center
                 </span>
               </div>
@@ -94,7 +91,6 @@ const Footer = () => {
               hardware networking, used laptop sales, biometric security, and custom Python Max Sale ERP software nationwide.
             </p>
 
-            {/* Quick Badge */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700/80 text-xs font-bold text-slate-300">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
@@ -106,7 +102,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Social Icons */}
             <div className="flex items-center gap-3 pt-2">
               {socialLinks.map((social, i) => (
                 <motion.a 
@@ -183,7 +178,9 @@ const Footer = () => {
                       rel="noopener noreferrer"
                       className="group flex items-start gap-1.5 text-slate-400 hover:text-blue-400 transition-colors text-sm font-semibold"
                     >
-                      <span className="mt-1"><ArrowUpRight className="w-3.5 h-3.5 text-blue-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" /></span>
+                      <span className="mt-1">
+                        <ArrowUpRight className="w-3.5 h-3.5 text-blue-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+                      </span>
                       <div>
                         <p className="leading-snug">{portal.name}</p>
                         <span className="text-[10px] font-black uppercase tracking-wider text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/20 inline-block mt-1">
@@ -253,7 +250,7 @@ const Footer = () => {
 
         {/* Bottom Copyright Row */}
         <div className="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap justify-center md:justify-start">
             <p className="text-slate-500 font-medium text-xs">
               © {currentYear} <strong className="text-slate-300">BugsFixer Pakistan</strong>. All Rights Reserved.
             </p>

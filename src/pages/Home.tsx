@@ -219,7 +219,7 @@ const Home = () => {
                 </motion.div>
               </motion.div>
 
-              {/* Hero Right Image */}
+              {/* Hero Right Video Block (Replaces Static Image) */}
               <motion.div 
                 className="lg:w-1/2 w-full relative min-h-[360px] sm:min-h-[500px]"
                 initial={{ opacity: 0 }} 
@@ -227,16 +227,25 @@ const Home = () => {
                 transition={{ duration: 0.4 }}
               >
                 <div className="relative z-10 bg-white p-3 sm:p-4 rounded-[2.5rem] lg:rounded-[3rem] shadow-2xl shadow-blue-900/10 border border-white/50 w-full">
-                  <div className="overflow-hidden rounded-[2rem] lg:rounded-[2.5rem] w-full h-[360px] sm:h-[450px] lg:h-[520px] bg-slate-100">
-                    <img 
-                      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80&fm=webp" 
-                      alt="BugsFixer IT Professional Setup" 
-                      className="w-full h-full object-cover object-center"
-                      fetchPriority="high"
-                      decoding="async"
-                      width="1200"
-                      height="520"
-                    />
+                  <div className="overflow-hidden rounded-[2rem] lg:rounded-[2.5rem] w-full h-[360px] sm:h-[450px] lg:h-[520px] bg-slate-900 relative group">
+                    
+                    {/* Copyright-Free Server/IT Network Video Loop */}
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      poster="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80&fm=webp"
+                      className="w-full h-full object-cover object-center absolute inset-0 z-0 opacity-80 group-hover:opacity-90 transition-opacity duration-700"
+                    >
+                      {/* High-quality, watermark-free IT Server room video from Mixkit */}
+                      <source src="https://assets.mixkit.co/videos/preview/mixkit-server-room-with-blue-and-pink-lights-flashing-34303-large.mp4" type="video/mp4" />
+                      Your browser does not support HTML5 video.
+                    </video>
+                    
+                    {/* Gradient Overlay for Text Readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 via-transparent to-transparent z-0"></div>
+
                   </div>
                   
                   {/* Floating Badge 1 */}
