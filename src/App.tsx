@@ -19,6 +19,7 @@ const Inventory = lazy(() => import('./pages/Inventory'));
 const FAQ = lazy(() => import('./pages/FAQ'));
 const TermsAndConditions = lazy(() => import('./pages/TermsAndConditions'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const NotFound = lazy(() => import('./pages/NotFound')); // 404 Page
 
 // --- Lazy Load Popups ---
 const CookieConsent = lazy(() => import('./components/CookieConsent'));
@@ -59,6 +60,9 @@ const AnimatedRoutes = () => {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
+
+            {/* Catch-all 404 Route - MUST be last */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </motion.div>
@@ -83,7 +87,7 @@ function App() {
         {/* Footer */}
         <Footer />
         
-        {/* Floating WhatsApp Action Widget (Fully Annotated for AI Agents) */}
+        {/* Floating WhatsApp Action Widget */}
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -110,7 +114,6 @@ function App() {
             rel="noopener noreferrer"
             aria-label="Contact BugsFixer technical team directly on WhatsApp at +923216900448"
             aria-describedby="whatsapp-tooltip"
-            data-webmcp-action="contact_whatsapp"
             className="relative bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 sm:p-4 lg:p-5 rounded-[1.5rem] sm:rounded-[2rem] shadow-[0_10px_30px_rgba(37,211,102,0.35)] flex items-center justify-center transition-colors"
           >
             <span className="absolute -inset-1 rounded-[1.7rem] sm:rounded-[2.2rem] bg-[#25D366] opacity-30 animate-ping pointer-events-none" />
